@@ -7,13 +7,38 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
   <script type="text/javascript" src="/javascripts/jquery.js"></script>
 </head>
+<body>
+
 <script>
   $(function(){
-    $('')
-  })
+    var oldContent = decodeURI(window.location.search.substr(12));
+    $('textarea-add').val(oldContent.replace(/\<br\/>/g,'\n'));
+    $('.btn-update').on('click',function(){
+      var updateContent = $('.textarea-add').val().trim().replace(/\n/g,'<br/>');
+      if(updateContent ===oldContent){
+        alert('内容没有更新!');
+        return;
+      }
+      var postData= {
+        'oldContent':oldContent,
+        'updateContent':updateContent
+      };
+      $.ajax({
+        url: '/',
+        type: 'post',
+        data: postData,
+        success: function(data){
+          alert('更新成功!');
+          location.href = '/';
+        },
+        error: function(data){
+          alert('更新失败!');
+          location.href = 'error';
+        }
+      });
+    });
+  });
 </script>
-
-<body>
 
 <h3 class=""><%= name %></h3>
 <div class="blog-add">

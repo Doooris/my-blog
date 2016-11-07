@@ -26,7 +26,6 @@
             mm = date.getMinutes(),
             ss = date.getSeconds();
 
-        debugger;
         var postData = {
           'content': blogContent,
           'date': yy + '-' + MM + '-' + dd + ' ' + hh + ':' + mm + ':' + ss
@@ -41,7 +40,6 @@
             location.href = '/';
           },
           error: function(data){
-            debugger;
             alert('发布失败！');
             location.href = 'error';
           }
@@ -67,6 +65,10 @@
           });
         }
       });
+      $('.update').on('click',function(){
+        var updateContent = $(this).attr('data-content');
+        location.href = '/update?updateBlog=' + updateContent;
+      });
 
     });
   </script>
@@ -86,9 +88,9 @@
 
 <div class="blog">
   <ul class="blog-list">
-    <% for(var i=0; i<content.length; i++){ %>
+    <% for(var i=0; i < content.length; i++){ %>
     <li class="blog-item">
-      <p class="blog-content"><%- content[i],content %></p>
+      <p class="blog-content"><%- content[i].content %></p>
       <p class="blog-extra">
         <span class="date"><%= content[i].date %></span>
         <a href="javascript:;" class="delete" data-content="<%=content[i].content %>">删除</a>

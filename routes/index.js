@@ -46,5 +46,17 @@ router.post('/', function(req, res) {
       res.send(200);
     })
   }
+  var oldContent = req.body.oldContent,
+    updateContent = req.body.updateContent;
+  if(oldContent && updateContent){
+    post.update({content: oldContent},{$set: {'content':updateContent}},function(err){
+      if(err){
+        console.error(err);
+        return;
+      }
+      console.log('更新成功!');
+      res.send(200);
+    });
+  }
 });
 module.exports = router;
