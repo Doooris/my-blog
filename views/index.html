@@ -26,6 +26,7 @@
             mm = date.getMinutes(),
             ss = date.getSeconds();
 
+        debugger;
         var postData = {
           'content': blogContent,
           'date': yy + '-' + MM + '-' + dd + ' ' + hh + ':' + mm + ':' + ss
@@ -47,6 +48,25 @@
         });
 
       });
+      $('.delete').on('click',function(){
+        var deleteContent = $(this).attr('data-content');
+        var postData = {
+            'deleteContent': deleteContent
+        };
+        if(confirm('您确定要删除这条博客吗?')){
+          $.ajax({
+            url: '/',
+            type: 'post',
+            data: postData,
+            success: function(data){
+              location.href = '/';
+            },
+            error: function(data){
+              location.href = 'error';
+            }
+          });
+        }
+      });
 
     });
   </script>
@@ -66,14 +86,24 @@
 
 <div class="blog">
   <ul class="blog-list">
+    <% for(var i=0; i<content.length; i++){ %>
     <li class="blog-item">
-      <p class="blog-content">你好</p>
+      <p class="blog-content"><%- content[i],content %></p>
       <p class="blog-extra">
-        <span class="date">2015-10-10</span>
-        <a href="javascript:;" class="delete">删除</a>
-        <a href="javascript:;" class="update">更新</a>
+        <span class="date"><%= content[i].date %></span>
+        <a href="javascript:;" class="delete" data-content="<%=content[i].content %>">删除</a>
+        <a href="javascript:;" class="update" data-content="<%=content[i].content %>">更新</a>
       </p>
     </li>
+    <% } %>
+    <!--<li class="blog-item">-->
+      <!--<p class="blog-content">你好</p>-->
+      <!--<p class="blog-extra">-->
+        <!--<span class="date">2015-10-10</span>-->
+        <!--<a href="javascript:;" class="delete">删除</a>-->
+        <!--<a href="javascript:;" class="update">更新</a>-->
+      <!--</p>-->
+    <!--</li>-->
   </ul>
 </div>
 

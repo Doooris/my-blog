@@ -6,7 +6,13 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: '博客首页', name: '博客'});
+  post.find({},function(err, docs){
+    if(err){
+      console.error(err);
+      return;
+    }
+  res.render('index', { title: '博客首页', name: '博客',content: docs.reverse()});
+});
 });
 
 router.post('/', function(req, res) {
@@ -28,6 +34,17 @@ router.post('/', function(req, res) {
       console.log('保存成功！');
       res.send(200);
     });
+  }
+  var deleteContent = req.body.deleteContent;
+  if(deleteContent) {
+    post.remove({content: deleteContent}, function(err){
+      if(err) {
+        console.error(err);
+        return;
+      }
+      console.log('删除成功!');
+      res.send(200);
+    })
   }
 });
 module.exports = router;
