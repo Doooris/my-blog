@@ -1,0 +1,475 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+body {
+    height: 100%;
+    background: #fff;
+    color: #555;
+    width: 100%;
+    min-width: 480px;
+    font-size: 14px;
+    font-family: Roboto,sans-serif;
+}
+td, th, caption {
+    font-size: 14px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-size: 100%;
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+a {
+    color: #555;
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover {
+    text-decoration: underline;
+}
+ol, ul, li {
+    list-style: none;
+}
+input, textarea, select, button {
+    font: 14px Roboto,sans-serif;
+}
+table {
+    border-collapse: collapse;
+}
+/* css common */
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix {
+    *zoom: 1;
+}
+.filterBlack{
+    filter: brightness(.5);
+}
+.filterWhite{
+    filter: brightness(.8)
+}
+header{
+    width: 100%;
+    height: 100%;
+}
+.outwrap,nav{
+    height:70px;
+    position: fixed;
+    top: 80px;
+    z-index: 1;
+    /*border: 1px solid red;*/
+}
+div.mylogo{
+    width: 5%;
+    left: 4%;
+}
+div.mylogo p{
+    font-size: 1.2vw;
+}
+div.mylogo img{
+    width: 100%;
+    border-radius: 50%;
+    padding: 2px;
+}
+nav{
+    width: 20%;
+    right: 3%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+nav .fa-lightbulb-o{
+    font-size: 2.5rem;
+    position: absolute;
+    right: 25%;
+    cursor: pointer;
+}
+.whiteA{
+    color: #a23134;
+    text-shadow: 0 0 4px #f5f5f5;
+}
+.blackA{
+    color: #434343;
+    text-shadow: 0 0 4px white;
+}
+.blackB{
+    background-color: #434343;
+    text-shadow: 0 0 4px white;
+}
+.whiteB{
+    background-color: #a23134;
+    text-shadow: 0 0 4px #f5f5f5;
+}
+.menubarH{
+    width: 15%;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+}
+.menubarH span{
+    width: 100%;
+    height: 4px;
+    display: block;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+.content-nav{
+    position: absolute;
+    left: 90%;
+    visibility: hidden;
+}
+.content-nav li{
+    display: inline-block;
+}
+.content-nav li a{
+    font-size: 1.2vw;
+    padding: 0 2px;
+    font-weight: bold;
+}
+nav span:nth-child(2){
+    width: 80%;
+}
+nav span:nth-child(4){
+    width: 85%;
+}
+div.bg{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background: url("../images/bg.jpg") no-repeat;
+    background-position: left;
+    background-size: cover;
+    z-index: -1;
+    overflow: hidden;
+}
+div.bg span{
+    background-size: 100%;
+    position: absolute;
+    z-index: -1;
+}
+div.bg span:first-child{
+    width: 300px;
+    height: 350px;
+    background: url("../images/close.png") no-repeat;
+    animation: bgMove 80s ease infinite;
+    bottom: 0px;
+    right: -300px;
+}
+div.bg span:nth-child(2){
+
+    width: 150px;
+    height: 180px;
+    background: url("../images/close2.png") no-repeat center;
+    background-size: 110%;
+    animation: bgMove 120s ease infinite;
+    top: 200px;
+    right: -300px;
+}
+div.bg span:nth-child(3){
+    width: 83px;
+    height: 103px;
+    background: url("../images/close3.png");
+    animation: bgMove 150s  ease-out infinite;
+    top: 100px;
+    right: -300px;
+}
+@-webkit-keyframes bgMove{
+    25%{
+        right: 10%;
+        bottom: 300px;
+    }
+    50%{
+        right:  40%;
+        bottom: 150px;
+    }
+    100%{
+        bottom: 300px;
+       right: 100%;
+    }
+}
+div.firstP{
+    width: 100%;
+    height: 100vh;
+}
+div.info{
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 40%;
+    z-index: 0;
+    color: white;
+    opacity: 0.8;
+}
+div.info h1{
+    font-weight: 100;
+    margin-bottom: 18px;
+    font-family: Roboto,sans-serif;
+}
+div.info h3{
+    color: #EB464D;
+    margin-bottom: 36px;
+    font-family: Roboto,sans-serif;
+    font-weight: 700;
+}
+div.info p{
+    padding: 0 17%;
+    font-weight: 100;
+}
+.wrapper{
+    width: 100%;
+    padding: 150px 0;
+    background-color: #ffffff;
+    position: relative;
+}
+.wrapper ul{
+    width: 78%;
+    height: 700px;
+    margin: 0 auto;
+    /*background-color: #77f527;*/
+    overflow: hidden;
+    /*border: 1px solid red;*/
+}
+@media (min-width: 480px) {
+    .wrapper ul li{
+        width: 100%;
+    }
+    .wrapper ul{
+        height: 1400px;
+    }
+    div.info h1{
+        font-size: 48px;
+    }
+    div.info h3{
+        font-size: 29px;
+    }
+    div.info p{
+        font-size: 18px;
+    }
+}
+@media (min-width: 768px) {
+    .wrapper ul li{
+        width: 50%;
+    }
+    .wrapper ul{
+    }
+    div.info h1{
+        font-size: 52px;
+    }
+    div.info h3{
+        font-size: 31px;
+    }
+
+}
+@media (min-width: 992px) {
+    div.info h1{
+        font-size: 60px;
+    }
+    div.info h3{
+        font-size: 35px;
+    }
+    div.info p{
+        font-size: 20px;
+    }
+}
+@media (min-width: 1200px) {
+    .wrapper ul li{
+        width: 33.3%;
+    }
+    .wrapper ul{
+        height: 700px;
+    }
+    div.info h1{
+        font-size: 72px;
+    }
+    div.info h3{
+        font-size: 38px;
+    }
+}
+@media (min-width: 1401px){
+    .content-nav li a{
+        font-size: 1.2vw;
+    }
+}
+@media (min-width: 1600px) {
+    .wrapper ul li{
+        width: 25%;
+    }
+}
+
+@media (max-width: 1400px) {
+    div.mylogo{
+        width: 75px;
+    }
+    div.mylogo p{
+        font-size: 19px;
+    }
+    nav{
+        width: 290px;
+    }
+    .content-nav li a{
+        font-size: 18px;
+    }
+}
+@media (max-width: 992px) {
+    div.mylogo{
+        width: 65px;
+    }
+    div.mylogo p{
+        font-size: 17px;
+    }
+    nav{
+        width: 270px;
+    }
+    .content-nav li a{
+        font-size: 18px;
+    }
+    .fa-lightbulb-o{
+        visibility: hidden;
+    }
+}
+@media (max-width: 768px) {
+    div.mylogo{
+        width: 50px;
+    }
+    div.mylogo p{
+        font-size: 16px;
+    }
+    nav{
+        width: 240px;
+    }
+    .content-nav li a{
+        font-size: 16px;
+    }
+    .mylogo{
+        left: 2%;
+    }
+}
+@media (max-width: 479px) {
+    div.info h1{
+        font-size: 42px;
+    }
+    div.info h3{
+        font-size: 24px;
+    }
+    div.info p{
+        font-size: 16px;
+    }
+
+}
+.wrapper ul li{
+    padding: 1.5%;
+    height: 350px;
+    box-sizing: border-box;
+    float: left;
+    background-color: #F1F1F1;
+    background-clip: content-box;
+    -webkit-background-clip: content-box;
+    -o-background-clip: content-box;
+    /*border: 1px solid black;*/
+}
+.wrapper ul li .inside {
+    box-sizing: border-box;
+    padding: 20px 20px;
+    text-align: center;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    /*border: 1px solid red;*/
+}
+.inside h3{
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+
+}
+.inside small{
+    line-height: 30px;
+}
+.inside .content-data,.inside .readMore,.inside p{
+    text-align: left;
+}
+.inside .readMore{
+    display: block;
+    line-height: 27px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.inside .tag,.inside .comment-num{
+    position: absolute;
+}
+.inside .tag{
+    bottom: 40px;
+}
+.inside .comment-num{
+    bottom: 20px;
+}
+.inside .tag i{
+    font-size: 16px;
+}
+.inside .tag a,.inside .comment-num a{
+    margin: 0 5px;
+    color: #145264;
+}
+.wrapper .more{
+    display: inline-block;
+    position: absolute;
+    right: 12%;
+    font-size: 20px;
+    line-height: 20px;
+    background-color: #5BC0DE;
+    border-radius: 5px;
+    padding: 15px 10px;
+    margin-top: 10px;
+}
+.wrapper .more:hover,.wrapper .more:focus,.wrapper .more:active{
+    background-color: #1b6e86;
+    text-decoration: none;
+    color: white;
+}
+.even-section{
+    background-color: #F1F1F1;
+}
+.even-section ul li{
+    background-color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
