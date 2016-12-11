@@ -3,7 +3,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fiel
     padding: 0;
 }
 body {
-    height: 100%;
+    padding-top: 100vh;
     background: #fff;
     color: #555;
     width: 100%;
@@ -57,27 +57,40 @@ table {
     filter: brightness(.8)
 }
 header{
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    background: linear-gradient(transparent,transparent 50%,rgba(0,0,0,0.6));
+    clip: rect(0,auto,auto,0);
+    overflow: hidden;
 }
 .outwrap,nav{
     height:70px;
     position: fixed;
     top: 80px;
-    z-index: 1;
+    z-index: 2;
     /*border: 1px solid red;*/
 }
 div.mylogo{
     width: 5%;
     left: 4%;
 }
+div.mylogo a{
+    text-decoration: none;
+}
 div.mylogo p{
     font-size: 1.2vw;
+    opacity: 0.8;
 }
 div.mylogo img{
     width: 100%;
     border-radius: 50%;
     padding: 2px;
+}
+div.mylogo img:hover{
+    transform: translate3d(1px,0,10px);
 }
 nav{
     width: 20%;
@@ -92,20 +105,22 @@ nav .fa-lightbulb-o{
     cursor: pointer;
 }
 .whiteA{
-    color: #a23134;
-    text-shadow: 0 0 4px #f5f5f5;
+    color: #f5f5f5;
+    opacity: 0.8;
 }
 .blackA{
     color: #434343;
+    opacity: 0.8;
     text-shadow: 0 0 4px white;
 }
 .blackB{
     background-color: #434343;
+    opacity: 0.9;
     text-shadow: 0 0 4px white;
 }
 .whiteB{
-    background-color: #a23134;
-    text-shadow: 0 0 4px #f5f5f5;
+    background-color: #f5f5f5;
+    opacity: 0.9;
 }
 .menubarH{
     width: 15%;
@@ -119,6 +134,7 @@ nav .fa-lightbulb-o{
     display: block;
     margin-top: 5px;
     border-radius: 5px;
+    opacity: 0.7;
 }
 .content-nav{
     position: absolute;
@@ -141,13 +157,15 @@ nav span:nth-child(4){
 }
 div.bg{
     position: fixed;
-    height: 100vh;
-    width: 100%;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
     background: url("../images/bg.jpg") no-repeat;
-    background-position: left;
+    background-position: 50% 50%;
     background-size: cover;
     z-index: -1;
-    overflow: hidden;
 }
 div.bg span{
     background-size: 100%;
@@ -159,7 +177,7 @@ div.bg span:first-child{
     height: 350px;
     background: url("../images/close.png") no-repeat;
     animation: bgMove 80s ease infinite;
-    bottom: 0px;
+    bottom: 0;
     right: -300px;
 }
 div.bg span:nth-child(2){
@@ -194,22 +212,18 @@ div.bg span:nth-child(3){
        right: 100%;
     }
 }
-div.firstP{
-    width: 100%;
-    height: 100vh;
-}
 div.info{
-    text-align: center;
-    width: 100%;
     position: absolute;
-    top: 40%;
-    z-index: 0;
+    left: 0;
+    right: 0;
+    top: 65%;
+    text-align: center;
+    z-index: 2;
     color: white;
     opacity: 0.8;
 }
 div.info h1{
     font-weight: 100;
-    margin-bottom: 18px;
     font-family: Roboto,sans-serif;
 }
 div.info h3{
@@ -219,22 +233,8 @@ div.info h3{
     font-weight: 700;
 }
 div.info p{
-    padding: 0 17%;
+    padding: 0 15%;
     font-weight: 100;
-}
-.wrapper{
-    width: 100%;
-    padding: 150px 0;
-    background-color: #ffffff;
-    position: relative;
-}
-.wrapper ul{
-    width: 78%;
-    height: 700px;
-    margin: 0 auto;
-    /*background-color: #77f527;*/
-    overflow: hidden;
-    /*border: 1px solid red;*/
 }
 @media (min-width: 480px) {
     .wrapper ul li{
@@ -363,6 +363,31 @@ div.info p{
     }
 
 }
+.wrapper{
+    width: 100%;
+    padding: 150px 0 200px;
+    position: relative;
+    overflow: hidden;
+}
+.wrapper ul,.wrapper .section-logo{
+    width: 78%;
+    height: 700px;
+    margin: 0 auto;
+    overflow: hidden;
+    /*border: 1px solid red;*/
+}
+.odd-section{
+    background-color: white;
+}
+.wrapper .section-logo{
+    height: auto;
+    font-size: 24px;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+.wrapper .section-logo i{
+    margin-right: 10px;
+}
 .wrapper ul li{
     padding: 1.5%;
     height: 350px;
@@ -384,7 +409,7 @@ div.info p{
     /*border: 1px solid red;*/
 }
 .inside h3{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     line-height: 20px;
 
@@ -421,24 +446,94 @@ div.info p{
     display: inline-block;
     position: absolute;
     right: 12%;
+    color: #F1F1F1;
     font-size: 20px;
     line-height: 20px;
-    background-color: #5BC0DE;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+    border: 1px solid transparent;
     border-radius: 5px;
     padding: 15px 10px;
     margin-top: 10px;
 }
 .wrapper .more:hover,.wrapper .more:focus,.wrapper .more:active{
-    background-color: #1b6e86;
+    background-color: #31b0d5;
+    border-color: #269abc;
     text-decoration: none;
     color: white;
 }
 .even-section{
     background-color: #F1F1F1;
+    position: relative;
 }
-.even-section ul li{
+.even-section ul li .inside{
+    padding: 0;
     background-color: white;
+    /*border: 1px solid black;*/
+    position: relative;
 }
+.even-section .inside .img-box{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    overflow: hidden;
+    /*border: 1px solid blue;*/
+}
+.even-section .img-box img{
+    width: 100%;
+}
+.even-section .mask-info{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    /*border: 1px solid red;*/
+    cursor: pointer;
+    background: linear-gradient(transparent,transparent 70%,rgba(0,0,0,0.6));
+}
+.even-section .mask-info small{
+    position: absolute;
+    display: block;
+    width: 100%;
+    bottom: 0;
+    padding: 15px 5%;
+    font-size: 15px;
+    line-height: 15px;
+    font-family: Exo;
+    font-weight: 600;
+    color: white;
+    text-align: left;
+    /*border: 1px solid whitesmoke;*/
+    background: linear-gradient(transparent,rgba(0,0,0,0.7));
+}
+.even-section .mask-info .name{
+    margin-left: 5%;
+    padding: 5px 0;
+    margin-bottom: 5px;
+    width: 30px;
+    border-bottom: 3px solid #f5f5f5;
+}
+.even-section .name a{
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+}
+.even-section .img-info{
+    color: white;
+    margin-left: 5%;
+    display: none;
+}
+.album-box{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.6);
+    left: 0;
+    top: 0;
+}
+
 
 
 
