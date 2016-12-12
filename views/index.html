@@ -8,16 +8,13 @@
   <script type="text/javascript" src="/javascripts/jquery.js"></script>
   <script>
     $(function() {
-
       // 发布
       $('.btn-publish').on('click', function() {
         var blogContent = $('.textarea-add').val().trim().replace(/\n/g, '<br/>');
-
         if (!blogContent) {
           alert('内容不能为空!');
           return;
         }
-
         var date = new Date(),
             yy = date.getFullYear(),
             MM = date.getMonth() + 1,
@@ -25,12 +22,10 @@
             hh = date.getHours(),
             mm = date.getMinutes(),
             ss = date.getSeconds();
-
         var postData = {
           'content': blogContent,
           'date': yy + '-' + MM + '-' + dd + ' ' + hh + ':' + mm + ':' + ss
         };
-
         $.ajax({
           url: '/',
           type: 'post',
@@ -44,7 +39,6 @@
             location.href = 'error';
           }
         });
-
       });
       $('.delete').on('click',function(){
         var deleteContent = $(this).attr('data-content');
@@ -69,7 +63,6 @@
         var updateContent = $(this).attr('data-content');
         location.href = '/update?updateBlog=' + updateContent;
       });
-
     });
   </script>
 </head>

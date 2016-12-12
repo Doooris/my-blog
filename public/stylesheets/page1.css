@@ -407,6 +407,7 @@ div.info p{
     overflow: hidden;
     position: relative;
     /*border: 1px solid red;*/
+    box-shadow: 2px 4px 6px #cccccc;
 }
 .inside h3{
     font-size: 18px;
@@ -491,13 +492,13 @@ div.info p{
     position: relative;
     /*border: 1px solid red;*/
     cursor: pointer;
-    background: linear-gradient(transparent,transparent 70%,rgba(0,0,0,0.6));
+    background: linear-gradient(rgba(0,0,0,0.4),transparent 14%,transparent 90%,rgba(0,0,0,0.6));
 }
 .even-section .mask-info small{
     position: absolute;
     display: block;
     width: 100%;
-    bottom: 0;
+    bottom: 5px;
     padding: 15px 5%;
     font-size: 15px;
     line-height: 15px;
@@ -509,7 +510,7 @@ div.info p{
     background: linear-gradient(transparent,rgba(0,0,0,0.7));
 }
 .even-section .mask-info .name{
-    margin-left: 5%;
+    margin-left: 6%;
     padding: 5px 0;
     margin-bottom: 5px;
     width: 30px;
@@ -522,16 +523,116 @@ div.info p{
 }
 .even-section .img-info{
     color: white;
-    margin-left: 5%;
+    margin-left: 6%;
     display: none;
 }
-.album-box{
-    position: absolute;
+.album-outside{
+    position: fixed;
     width: 100%;
     height: 100vh;
     background: rgba(0,0,0,0.6);
     left: 0;
     top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    visibility: hidden
+}
+.album-outside .imgs-box{
+    position: absolute;
+    width: 85vmin;
+    height: 85vmin;
+    background: white;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.album-outside .btn{
+    padding: 0;
+    position: absolute;
+    display: inline-block;
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    font-size: 48px;
+    width: 30px;
+    height: 60px;
+    top: 50%;
+    margin-top: -30px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+.album-outside .prev{
+    left: -40px;
+}
+.album-outside .next{
+    right: -40px;
+}
+.album-outside .imgs-box .fa-times-circle{
+    font-size: 36px;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    color: rgba(0,0,0,0.6);
+    z-index: 2;
+}
+.album-outside .imgs{
+    box-sizing: border-box;
+    border: 6px solid white;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.album-outside .imgs li{
+    width: 100%;
+    height: 100%;
+
+}
+.album-outside .prompt{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    opacity: 0;
+}
+.album-outside .position-info{
+    position: absolute;
+    bottom: -40px;
+    color: white;
+    left: 6%;
+    font-size: 24px;
+    line-height: 24px;
+    /*background-color: rgba(255,255,255,0.2);*/
+}
+.album-outside .position-info input{
+    display: inline-block;
+    width: 40px;
+    height: 25px;
+    /*border: none;*/
+    background: none;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    margin-right: 5px;
+}
+.album-outside .position-info i{
+    margin-right: 5px;
+    cursor: pointer;
+}
+.album-outside .position-info i:focus,.album-outside .position-info i:active{
+    font-size: 26px;
+    text-shadow: 0 0 2px yellow;
+}
+.album-outside .warn{
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 200;
+    color: red;
 }
 
 
