@@ -6,7 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var update = require('./routes/update');
+
+var admin_index = require('./routes/admin_index');
+var admin_update = require('./routes/admin_update');
 
 var app = express();
 global.post = require('./data/mongoose');
@@ -25,7 +27,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/', update);
+app.use('/admin', admin_index);
+app.use('/admin', admin_update);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
