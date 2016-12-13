@@ -18,11 +18,14 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res) {
   var content = req.body.content;
   var date = req.body.date;
-
-  if (content && date) {
+  var title = req.body.title;
+  var author = req.body.author;
+  if (content && date && title && author) {
     var newPost = new post({
       content: content,
-      date: date
+      date: date,
+      title: title,
+      author: author
     });
 
     newPost.save(function (err) {
@@ -35,9 +38,9 @@ router.post('/', function(req, res) {
       res.send(200);
     });
   }
-  var deleteContent = req.body.deleteContent;
-  if(deleteContent) {
-    post.remove({content: deleteContent}, function(err){
+  var deleteId = req.body.deleteId;
+  if(deleteId) {
+    post.remove({_id: deleteId}, function(err){
       if(err) {
         console.error(err);
         return;

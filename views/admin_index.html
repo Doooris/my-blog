@@ -11,6 +11,8 @@
       // 发布
       $('.btn-publish').on('click', function() {
         var blogContent = $('.textarea-add').val().trim().replace(/\n/g, '<br/>');
+        var blogTitle = $("#title").val().trim();
+        var blogAuthor = $("#author").val().trim();
         if (!blogContent) {
           alert('内容不能为空!');
           return;
@@ -23,6 +25,8 @@
             mm = date.getMinutes(),
             ss = date.getSeconds();
         var postData = {
+          'title': blogTitle,
+          'author': blogAuthor,
           'content': blogContent,
           'date': yy + '-' + MM + '-' + dd + ' ' + hh + ':' + mm + ':' + ss
         };
@@ -41,9 +45,9 @@
         });
       });
       $('.delete').on('click',function(){
-        var deleteContent = $(this).attr('data-content');
+        var deleteId = $(this).attr('data-id');
         var postData = {
-            'deleteContent': deleteContent
+            'deleteId': deleteId
         };
         if(confirm('您确定要删除这条博客吗?')){
           $.ajax({
@@ -60,8 +64,10 @@
         }
       });
       $('.update').on('click',function(){
-        var updateContent = $(this).attr('data-content');
-        location.href = '/admin/update?updateBlog=' + updateContent;
+        var updateTitle =$(this).attr('data-title');
+        var updateAuthor = $(this).attr('data-author');
+        var updateId = $(this).attr('data-id');
+        location.href = '/admin/update?updateBlog:updateTitle='+updateTitle+'&updateAuthor='+updateAuthor+'&updateId='+updateId;
       });
     });
   </script>
@@ -85,22 +91,17 @@
   <ul class="blog-list">
     <% for(var i=0; i < content.length; i++){ %>
     <li class="blog-item">
+      <!--<p class="blog-id"><%- content[i]._id %></p>-->
+      <h4 class="title"><%= content[i].title %></h4>
+      <p class="author"><%= content[i].author %></p>
       <p class="blog-content"><%- content[i].content %></p>
       <p class="blog-extra">
         <span class="date"><%= content[i].date %></span>
-        <a href="javascript:;" class="delete" data-content="<%=content[i].content %>">删除</a>
-        <a href="javascript:;" class="update" data-content="<%=content[i].content %>">更新</a>
+        <a href="javascript:;" class="delete" data-id="<%=content[i]._id %>">删除</a>
+        <a href="javascript:;" class="update" data-title="<%= content[i].title %>" data-author="<%= content[i].author %>" data-id="<%=content[i]._id %>">更新</a>
       </p>
     </li>
     <% } %>
-    <!--<li class="blog-item">-->
-      <!--<p class="blog-content">你好</p>-->
-      <!--<p class="blog-extra">-->
-        <!--<span class="date">2015-10-10</span>-->
-        <!--<a href="javascript:;" class="delete">删除</a>-->
-        <!--<a href="javascript:;" class="update">更新</a>-->
-      <!--</p>-->
-    <!--</li>-->
   </ul>
 </div>
 
