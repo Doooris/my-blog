@@ -27,12 +27,12 @@
           'date': yy + '-' + MM + '-' + dd + ' ' + hh + ':' + mm + ':' + ss
         };
         $.ajax({
-          url: '/',
+          url: '/admin',
           type: 'post',
           data: postData,
           success: function(data){
             alert('发布成功！');
-            location.href = '/';
+            location.href = '/admin';
           },
           error: function(data){
             alert('发布失败！');
@@ -47,11 +47,11 @@
         };
         if(confirm('您确定要删除这条博客吗?')){
           $.ajax({
-            url: '/',
+            url: '/admin',
             type: 'post',
             data: postData,
             success: function(data){
-              location.href = '/';
+              location.href = '/admin';
             },
             error: function(data){
               location.href = 'error';
@@ -61,7 +61,7 @@
       });
       $('.update').on('click',function(){
         var updateContent = $(this).attr('data-content');
-        location.href = '/update?updateBlog=' + updateContent;
+        location.href = '/admin/update?updateBlog=' + updateContent;
       });
     });
   </script>
@@ -71,12 +71,14 @@
 
 <h3 class=""><%= name %></h3>
 <div class="blog-add">
-<div class="blog-textarea">
-  <textarea name="" class="textarea-add" cols="30" rows="10"></textarea>
-</div>
-<p class="blog-action">
-  <a class="btn-publish" href="javascript:;">发布</a>
-</p>
+  <label for="title">标题:<input type="text" id="title"></label><br/>
+  <label for="author">作者:<input type="text" id="author"></label>
+  <div class="blog-textarea">
+    <textarea name="" class="textarea-add" cols="30" rows="10"></textarea>
+  </div>
+  <p class="blog-action">
+    <a class="btn-publish" href="javascript:;">发布</a>
+  </p>
 </div>
 
 <div class="blog">

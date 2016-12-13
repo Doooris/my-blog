@@ -12,7 +12,7 @@
 <script>
   $(function(){
     var oldContent = decodeURI(window.location.search.substr(12));
-    $('textarea-add').val(oldContent.replace(/\<br\/>/g,'\n'));
+    $('.textarea-add').val(oldContent.replace(/\<br\/>/g,'\n'));
     $('.btn-update').on('click',function(){
       var updateContent = $('.textarea-add').val().trim().replace(/\n/g,'<br/>');
       if(updateContent ===oldContent){
@@ -24,12 +24,12 @@
         'updateContent':updateContent
       };
       $.ajax({
-        url: '/',
+        url: '/admin',
         type: 'post',
         data: postData,
         success: function(data){
           alert('更新成功!');
-          location.href = '/';
+          location.href = '/admin';
         },
         error: function(data){
           alert('更新失败!');

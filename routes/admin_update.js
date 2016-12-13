@@ -6,7 +6,7 @@ var router = express.Router();
 
 /* GET update page. */
 router.get('/update', function(req, res, next) {
-  res.render('update', { title: '博客更新页', name: '博客更新'});
+  res.render('admin_update', { title: '博客更新页', name: '博客更新'});
 });
 
 

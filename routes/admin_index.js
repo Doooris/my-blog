@@ -4,14 +4,14 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+/* GET admin page. */
 router.get('/', function(req, res, next) {
   post.find({},function(err, docs){
     if(err){
       console.error(err);
       return;
     }
-  res.render('index', { title: '博客首页', name: '博客',content: docs.reverse()});
+  res.render('admin_index', { title: '博客后台发布页', name: '发布博客',content: docs.reverse()});
 });
 });
 
