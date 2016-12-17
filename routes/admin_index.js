@@ -19,8 +19,7 @@ router.post('/', function(req, res) {
     var content = req.body.content;
     var date = req.body.date;
     var title = req.body.title;
-    var str_tags = req.body.tags;
-    var tags = str_tags.split(',');
+    var tags = req.body.tags;
     var author = req.body.author;
     if (content && date && title && author) {
       var newPost = new post({
