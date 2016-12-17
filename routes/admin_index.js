@@ -16,30 +16,33 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res) {
-  var content = req.body.content;
-  var date = req.body.date;
-  var title = req.body.title;
-  var author = req.body.author;
-  if (content && date && title && author) {
-    var newPost = new post({
-      content: content,
-      date: date,
-      title: title,
-      author: author
-    });
-
-    newPost.save(function (err) {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      // newPost is saved!
-      console.log('保存成功！');
-      res.send(200);
-    });
-  }
+    var content = req.body.content;
+    var date = req.body.date;
+    var title = req.body.title;
+    var str_tags = req.body.tags;
+    var tags = str_tags.split(',');
+    var author = req.body.author;
+    if (content && date && title && author) {
+      var newPost = new post({
+        content: content,
+        date: date,
+        title: title,
+        author: author,
+        tags: tags
+      });
+      newPost.save(function (err) {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        // newPost is saved!
+        console.log('保存成功！');
+        console.log(tags);
+        res.send(200);
+      });
+    }
   var deleteId = req.body.deleteId;
-  if(deleteId) {
+  if(deleteId){
     post.remove({_id: deleteId}, function(err){
       if(err) {
         console.error(err);
@@ -48,18 +51,6 @@ router.post('/', function(req, res) {
       console.log('删除成功!');
       res.send(200);
     })
-  }
-  var oldContent = req.body.oldContent,
-    updateContent = req.body.updateContent;
-  if(oldContent && updateContent){
-    post.update({content: oldContent},{$set: {'content':updateContent}},function(err){
-      if(err){
-        console.error(err);
-        return;
-      }
-      console.log('更新成功!');
-      res.send(200);
-    });
   }
 });
 module.exports = router;

@@ -9,7 +9,8 @@ var blogSchema = new mongoose.Schema({
   title: String,
   author: String,
   content: {type: String, unique:true}, // unique 保证数据的唯一，但有时候不管用
-  date: String
+  date: String,
+  tags: [{type:String}]
 }, {collection: 'post'});
 
 var post = mongoose.model('post', blogSchema);

@@ -27,13 +27,7 @@ $(function() {
     })
       .siblings(".fa-lightbulb-o").animate({left:"68%"},400)
   })
-  $(".content-data").each(function(){
-    var maxwidth = 200;
-    if($(this).text().length>maxwidth){
-      $(this).html($(this).html().substring(0,maxwidth));
-      $(this).html($(this).html()+"......");
-    }
-  })
+
   $(".even-section .mask-info").mouseenter(function(){
     $(this).siblings(".img-box").stop().animate({width:"90%",filter:"brightness(0)"},600).css("filter","brightness(0.4)");
     $(this).find(".img-info").fadeIn(400);

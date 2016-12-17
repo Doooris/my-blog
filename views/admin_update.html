@@ -11,24 +11,37 @@
 
 <script>
   $(function(){
-    var oldContent = decodeURI(window.location.search.substr(12));
-    $('.textarea-add').val(oldContent.replace(/\<br\/>/g,'\n'));
     $('.btn-update').on('click',function(){
+      var updateTitle = $('#title').val().trim();
+      var updateAuthor = $('#author').val().trim();
       var updateContent = $('.textarea-add').val().trim().replace(/\n/g,'<br/>');
-      if(updateContent ===oldContent){
-        alert('内容没有更新!');
+      var updateId = $('.id').val();
+      if(!updateTitle){
+        alert('请添加上标题!');
+        return;
+      }
+      if (!updateAuthor) {
+        alert('请输入作者!');
+        return;
+      }
+      if (!updateContent) {
+        alert('内容不能为空!');
         return;
       }
       var postData= {
-        'oldContent':oldContent,
-        'updateContent':updateContent
+        'updateId':updateId,
+        'updateTitle': updateTitle,
+        'updateContent':updateContent,
+        'updateAuthor':updateAuthor
       };
       $.ajax({
-        url: '/admin',
+        url: '/admin/update',
         type: 'post',
         data: postData,
         success: function(data){
-          alert('更新成功!');
+          console.log(data);
+          info = JSON.parse(data.info)
+          alert(info.msg);
           location.href = '/admin';
         },
         error: function(data){
@@ -42,8 +55,11 @@
 
 <h3 class=""><%= name %></h3>
 <div class="blog-add">
+  <input type="text" class="id" value="<%= id %>" style="display: none;">
+  <label for="title">标题:<input type="text" id="title" value="<%= oldTitle %>"></label><br/>
+  <label for="author">作者:<input type="text" id="author" value="<%= oldAuthor %>"></label>
   <div class="blog-textarea">
-    <textarea name="" class="textarea-add" cols="30" rows="10"></textarea>
+    <textarea name="" class="textarea-add" cols="30" rows="10"><%= oldContent %></textarea>
   </div>
   <p class="blog-action">
     <a class="btn-update" href="javascript:;">更新</a>

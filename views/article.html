@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Language" content="zh-CN"/>
+  <meta name="Author" content=""/>
+  <meta name="keywords" content=""/>
+  <meta name="description" content=""/>
+  <title>DorisBlog</title>
+  <link type="text/css" rel="stylesheet" href="stylesheets/article.css"/>
+  <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<header class="header">
+<!-- fixed nav begin here-->
+  <div class="header-mask">
+    <div class="header-outside">
+      <div class="outwrap mylogo">
+        <img src="  images/mypic.png" alt="DorisHuang'picture"><br>
+        <p>Doris'blog</p>
+      </div>
+      <div class="word">Stay hungry,keep thinking</div>
+      <div class="search">
+        <div class="search-inside">
+          <i class="fa fa-search"></i>
+          <input type="text">
+        </div>
+      </div>
+      <div class="arrow"><i class="fa fa-angle-up"></i></div>
+    </div>
+  </div>
+</header>
+<!--article section begins-->
+<div class="wrapper">
+  <div class="wrapper-left_out">
+    <div class="wrapper-left">
+      <ul class="nav">
+        <li><a href="../">首页</a></li>
+        <i class="fa fa-angle-right"></i>
+        <li class="current"><a href="javascript:;">文章</a></li>
+      </ul>
+      <!--<p class="prev_link plink"><i class="fa fa-angle-double-left"></i><a href="">上一篇文章</a></p>-->
+      <!--<p class="next_link plink"><a href="">下一篇文章</a><i class="fa fa-angle-double-right"></i></p>-->
+      <ul class="article-list">
+        <% for( var i = 0; i< content.length; i++ ){ %>
+        <li>
+            <h3 class="title"><a href=""><%= content[i].title %></a></h3>
+            <small><span class="date"><%= content[i].date %></span><span style="margin: 0 6px">by</span><span class="author"><%= content[i].author %></span></small>
+            <div class="content"><%- content[i].content %>
+            </div>
+            <a href="#" class="readMore">阅读全文...</a>
+            <p class="tag"><i class="fa fa-tag"></i><a href="">git命令</a>,<a>Linux</a>
+            <p class="comment"><i class="fa fa-comment"></i><a>5条评论&gt;&gt;</a></p>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+  <div class="wrapper-right"></div>
+</div>
+
+<script type="text/javascript" src="javascripts/jquery-1.12.0.2.js"></script>
+<script type="text/javascript" src="javascripts/article.js"></script>
+</body>
+</html>

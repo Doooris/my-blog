@@ -13,8 +13,21 @@
         var blogContent = $('.textarea-add').val().trim().replace(/\n/g, '<br/>');
         var blogTitle = $("#title").val().trim();
         var blogAuthor = $("#author").val().trim();
+        var blogTags = $("#tags").val().trim();
+        if (!blogTitle) {
+          alert('请添加上标题!');
+          return;
+        }
+        if (!blogAuthor) {
+          alert('请输入作者!');
+          return;
+        }
         if (!blogContent) {
           alert('内容不能为空!');
+          return;
+        }
+        if(!blogTags){
+          alert('请添加至少一条标签!');
           return;
         }
         var date = new Date(),
@@ -28,7 +41,8 @@
           'title': blogTitle,
           'author': blogAuthor,
           'content': blogContent,
-          'date': yy + '-' + MM + '-' + dd + ' ' + hh + ':' + mm + ':' + ss
+          'date': yy + '-' + MM + '-' + dd + ' ' + hh + ':' + mm + ':' + ss,
+          'tags': blogTags
         };
         $.ajax({
           url: '/admin',
@@ -64,10 +78,10 @@
         }
       });
       $('.update').on('click',function(){
-        var updateTitle =$(this).attr('data-title');
-        var updateAuthor = $(this).attr('data-author');
-        var updateId = $(this).attr('data-id');
-        location.href = '/admin/update?updateBlog:updateTitle='+updateTitle+'&updateAuthor='+updateAuthor+'&updateId='+updateId;
+        var oldTitle =$(this).attr('data-title');
+        var oldAuthor = $(this).attr('data-author');
+        var oldId = $(this).attr('data-id');
+        location.href = '/admin/update?Title='+oldTitle+'&Author='+oldAuthor+'&Id='+oldId;
       });
     });
   </script>
@@ -75,10 +89,11 @@
 
 <body>
 
-<h3 class=""><%= name %></h3>
+<h2 class=""><%= name %></h2>
 <div class="blog-add">
   <label for="title">标题:<input type="text" id="title"></label><br/>
-  <label for="author">作者:<input type="text" id="author"></label>
+  <label for="author">作者:<input type="text" id="author"></label><br/>
+  <label for="author">标签:<input type="text" id="tags"></label>请以“,”作为分隔符
   <div class="blog-textarea">
     <textarea name="" class="textarea-add" cols="30" rows="10"></textarea>
   </div>
@@ -91,13 +106,13 @@
   <ul class="blog-list">
     <% for(var i=0; i < content.length; i++){ %>
     <li class="blog-item">
-      <!--<p class="blog-id"><%- content[i]._id %></p>-->
-      <h4 class="title"><%= content[i].title %></h4>
+      <h3 class="title"><%= content[i].title %></h3>
       <p class="author"><%= content[i].author %></p>
+      <span class="tags">标签:<%= content[i].tags %></span>
       <p class="blog-content"><%- content[i].content %></p>
       <p class="blog-extra">
         <span class="date"><%= content[i].date %></span>
-        <a href="javascript:;" class="delete" data-id="<%=content[i]._id %>">删除</a>
+        <a href="javascript:;" class="delete" data-id="<%= content[i]._id %>">删除</a>
         <a href="javascript:;" class="update" data-title="<%= content[i].title %>" data-author="<%= content[i].author %>" data-id="<%=content[i]._id %>">更新</a>
       </p>
     </li>

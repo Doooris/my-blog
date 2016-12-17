@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-
+var article = require('./routes/article');
 var admin_index = require('./routes/admin_index');
 var admin_update = require('./routes/admin_update');
 
@@ -27,6 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/', article);
 app.use('/admin', admin_index);
 app.use('/admin', admin_update);
 
