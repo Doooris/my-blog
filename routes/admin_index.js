@@ -6,12 +6,12 @@ var router = express.Router();
 
 /* GET admin page. */
 router.get('/', function(req, res, next) {
-  post.find({},function(err, docs){
+  post.find({}, null, {sort: {date: -1}},function(err, docs){
     if(err){
       console.error(err);
       return;
     }
-  res.render('admin_index', { title: '博客后台发布页', name: '发布博客',content: docs.reverse()});
+  res.render('admin_index', { title: '博客后台发布页', name: '发布博客',content: docs});
 });
 });
 
@@ -19,9 +19,15 @@ router.post('/', function(req, res) {
     var content = req.body.content;
     var date = req.body.date;
     var title = req.body.title;
-    var tags = req.body.tags;
+    var arry_tags = req.body.tags.split(" ");
+    var tags = [];
+    arry_tags.forEach(function(element) {
+    if (element) {
+      tags.push(element);
+  }
+  })
     var author = req.body.author;
-    if (content && date && title && author) {
+    if (content && date && title && author && tags) {
       var newPost = new post({
         content: content,
         date: date,
@@ -40,16 +46,6 @@ router.post('/', function(req, res) {
         res.send(200);
       });
     }
-  var deleteId = req.body.deleteId;
-  if(deleteId){
-    post.remove({_id: deleteId}, function(err){
-      if(err) {
-        console.error(err);
-        return;
-      }
-      console.log('删除成功!');
-      res.send(200);
-    })
-  }
+
 });
 module.exports = router;

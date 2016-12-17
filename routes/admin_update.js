@@ -10,26 +10,35 @@ router.get('/update', function(req, res, next) {
   var oldAuthor = req.query.Author;
   var Id = req.query.Id;
   var oldTags = req.query.Tags;
+  var str_oldTags = oldTags.replace( /,/g,' ');
   post.findOne({'_id':Id},function(err,data){
     if(err){
       console.error(err);
       return;
     }
     var oldContent = data.content.replace(/\<br\/>/g,'\n');
-    res.render('admin_update', { title: '博客更新页', name: '博客更新',oldTitle: oldTitle,oldAuthor: oldAuthor,oldContent:oldContent,id: Id,oldTags:oldTags});
+    res.render('admin_update', { title: '博客更新页', name: '博客更新',oldTitle: oldTitle,oldAuthor: oldAuthor,oldContent:oldContent,id: Id,oldTags:str_oldTags});
   })
 });
 
 router.post('/update',function(req,res,next){
-  var Id = req.body.updateId,
-      updateTitle = req.body.updateTitle,
-      updateAuthor = req.body.updateAuthor,
-      updateContent = req.body.updateContent,
-      updateTags = req.body.updateTags,
-      oldTitle = '',
-      oldAuthor = '',
-      oldContent = '',
-      oldTags = '';
+  var Id = req.body.updateId;
+  var updateTitle = req.body.updateTitle;
+  var updateAuthor = req.body.updateAuthor;
+  var updateContent = req.body.updateContent;
+  var arry_updateTags = req.body.updateTags.split(" ");
+  var updateTags = [];
+  arry_updateTags.forEach(function(element) {
+    if (element) {
+      updateTags.push(element);
+    }
+  })
+  var updateCtags = updateTags.join(",");
+  var oldTitle = '';
+  var oldAuthor = '';
+  var oldContent = '';
+  var oldTags = '';
+  console.log('updatetags='+updateTags);
   post.findOne({'_id':Id},function(err,data){
     if(err){
       console.error(err);
@@ -39,7 +48,8 @@ router.post('/update',function(req,res,next){
     oldTitle = data.title;
     oldContent = data.content;
     oldTags = data.tags;
-    if((oldContent == updateContent) && (oldTitle == updateTitle) && (oldAuthor == updateAuthor) && (oldTags == updateTags)){
+    var oldCtags = oldTags.join(",");
+    if((oldContent == updateContent) && (oldTitle == updateTitle) && (oldAuthor == updateAuthor) && (oldCtags == updateCtags)){
       var info = {'msg':'内容没有更新!'};
       res.send({"info":JSON.stringify(info)});
       return;}
@@ -54,6 +64,21 @@ router.post('/update',function(req,res,next){
     res.send({"info":JSON.stringify(info)})
   })
 
+})
+
+router.post('/delete',function(req,res,next){
+  var deleteId = req.body.deleteId;
+  console.log(deleteId);
+  if(deleteId){
+    post.remove({_id: deleteId}, function(err){
+      if(err) {
+        console.error(err);
+        return;
+      }
+      console.log('删除成功!');
+      res.send(200);
+    })
+  }
 })
 
 

@@ -60,12 +60,13 @@
       });
       $('.delete').on('click',function(){
         var deleteId = $(this).attr('data-id');
+        console.log(deleteId);
         var postData = {
             'deleteId': deleteId
         };
         if(confirm('您确定要删除这条博客吗?')){
           $.ajax({
-            url: '/admin',
+            url: '/admin/delete',
             type: 'post',
             data: postData,
             success: function(data){
@@ -81,7 +82,7 @@
         var oldTitle =$(this).attr('data-title');
         var oldAuthor = $(this).attr('data-author');
         var oldId = $(this).attr('data-id');
-        var oldTags = $(this).attr('data-Tags');
+        var oldTags = $(this).attr('data-tags');
         location.href = '/admin/update?Title='+oldTitle+'&Author='+oldAuthor+'&Id='+oldId+'&Tags='+oldTags;
       });
     });
@@ -109,7 +110,10 @@
     <li class="blog-item">
       <h3 class="title"><%= content[i].title %></h3>
       <p class="author"><%= content[i].author %></p>
-      <span class="tags">标签:<%= content[i].tags %></span>
+      <span class="tags">标签:
+        <%= content[i].tags %>
+
+      </span>
       <p class="blog-content"><%- content[i].content %></p>
       <p class="blog-extra">
         <span class="date"><%= content[i].date %></span>
