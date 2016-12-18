@@ -45,8 +45,7 @@
         type: 'post',
         data: postData,
         success: function(data){
-          console.log(data);
-          info = JSON.parse(data.info)
+          info = JSON.parse(data.info);
           alert(info.msg);
           location.href = '/admin';
         },

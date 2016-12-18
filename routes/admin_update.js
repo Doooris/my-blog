@@ -38,7 +38,6 @@ router.post('/update',function(req,res,next){
   var oldAuthor = '';
   var oldContent = '';
   var oldTags = '';
-  console.log('updatetags='+updateTags);
   post.findOne({'_id':Id},function(err,data){
     if(err){
       console.error(err);
@@ -52,6 +51,7 @@ router.post('/update',function(req,res,next){
     if((oldContent == updateContent) && (oldTitle == updateTitle) && (oldAuthor == updateAuthor) && (oldCtags == updateCtags)){
       var info = {'msg':'内容没有更新!'};
       res.send({"info":JSON.stringify(info)});
+      console.log('内容没有更新!');
       return;}
     post.update({'_id': Id}, {$set: {'content':updateContent,'title':updateTitle,'author':updateAuthor,'tags':updateTags}}, function(err){
       if(err){

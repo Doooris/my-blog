@@ -6,12 +6,12 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/article', function(req, res, next) {
-  post.find({},function(err, docs){
+  post.find({},null,{sort:'-date'},function(err, docs){
     if(err){
       console.error(err);
       return;
     }
-  res.render('article', { content: docs.reverse() });
+  res.render('article', { content: docs });
 });
 });
 

@@ -49,7 +49,10 @@
             <div class="content"><%- content[i].content %>
             </div>
             <a href="#" class="readMore">阅读全文...</a>
-            <p class="tag"><i class="fa fa-tag"></i><a href="">git命令</a>,<a>Linux</a>
+            <p class="tag"><i class="fa fa-tag"></i>
+              <% content[i].tags.forEach(function(element){ %>
+              <a href=""><%= element %></a>
+                          <% }) %>
             <p class="comment"><i class="fa fa-comment"></i><a>5条评论&gt;&gt;</a></p>
         </li>
         <% } %>
