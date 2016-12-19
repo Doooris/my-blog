@@ -5,7 +5,7 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/article', function(req, res, next) {
+router.get('/', function(req, res, next) {
   post.find({},null,{sort:'-date'},function(err, docs){
     if(err){
       console.error(err);
@@ -15,7 +15,7 @@ router.get('/article', function(req, res, next) {
 });
 });
 
-router.post('/article', function(req, res) {
+router.post('/', function(req, res) {
   var content = req.body.content;
   var date = req.body.date;
 

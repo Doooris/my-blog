@@ -8,9 +8,14 @@ mongoose.connect('mongodb://localhost/blog');
 var blogSchema = new mongoose.Schema({
   title: String,
   author: String,
-  content: {type: String, unique:true}, // unique 保证数据的唯一，但有时候不管用
+  content: String,
   date: String,
-  tags: [{type:String}]
+  tags: [{type:String}],
+  article_id: {type: Number, unique:true},
+  about_id: {
+    prev_id: Number,
+    next_id: Number
+  }
 }, {collection: 'post'});
 
 var post = mongoose.model('post', blogSchema);

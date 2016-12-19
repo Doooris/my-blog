@@ -138,16 +138,15 @@ header .search i{
     cursor: pointer;
 }
 header .arrow{
+
     position: absolute;
     color: white;
     font-size: 26px;
     bottom:0;
-    left: 50%;
     opacity: 0.5;
-    transform: translateX(-50%);
     cursor: pointer;
     /*border: 1px solid red;*/
-    width: 50px;
+    width: 100%;
     text-align: center;
 }
 header .arrow:hover{
@@ -182,9 +181,6 @@ header .arrow:hover{
     margin-left: -300px;
     height: 500px;
 }
-.wrapper-left .nav{
-    margin-bottom: 10px;
-}
 .wrapper-left .nav:before{
     content: '|';
     opacity: 0.7;
@@ -196,7 +192,7 @@ header .arrow:hover{
     font-size: 18px;
     opacity: 0.7;
 }
-.current a{
+.current{
     /*color: rgba(0,0,0,0.9);*/
     color: #2e486f;
 }
@@ -205,7 +201,7 @@ header .arrow:hover{
 }
 .wrapper-left .plink{
     opacity: 0.8;
-    margin-bottom: 10px;
+    margin: 15px 0;
 }
 .wrapper-left .prev_link{
     float: left;
@@ -215,13 +211,16 @@ header .arrow:hover{
 }
 .article-list{
     width: 100%;
-    /*padding-top: 30px;*/
+    padding-top:40px;
+}
+.smaller_ptop{
+    padding-top: 20px;
 }
 .article-list li{
-    margin-top: 30px;
+    margin-top: 40px;
     /*border: 1px solid red;*/
     border-bottom: 1px dashed rgba(0,0,0,0.2);
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 }
 .article-list .title a{
     display: block;
@@ -229,38 +228,48 @@ header .arrow:hover{
     font-weight: 400;
     opacity: 0.8;
     color: #2e486f;
-    line-height: 2rem;
-}
-.article-list .title a:hover{
-    color: #517ec3;
+    line-height: 2.5rem;
     text-decoration: none;
+
 }
-/*.article-list .title a:visited{*/
-    /*color: #5D92E1;*/
-/*}*/
+.article-list .title a:hover,.article-list .comment a:hover,.article-list .readMore:hover{
+    color: #4870ad;
+}
 .article-list li small{
     font-size: 14px;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 .article-list .readMore{
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 500;
     line-height: 2.5rem;
 }
-.article-list .tag,.article-list .comment{
-    margin: 0.6rem 0;
-
-}
-.article-list i{
-    font-size: 14px;
-}
-.article-list .tag a,.article-list .comment a{
-    margin: 0 0.3rem;
-    color: #2e486f;
+.article-list .tag i{
+    font-size: 15px;
     opacity: 0.8;
 }
+.article-list .comment i{
+    font-size: 13px;
+    opacity: 0.8;
+}
+.article-list .tag a{
+    background: rgba(0,0,0,0.3);
+    color: white;
+    padding: 0.2rem 0.4rem;
+    border-radius: 2px;
+    text-decoration: none;
+}
+.article-list .tag a:hover{
+    background: rgba(0,0,0,0.5);
+
+}
+.article-list .tag a,.article-list .comment a{
+    display: inline-block;
+    margin: 0.2rem 0.3rem;
+    opacity: 0.9;
+}
 .article-list .content{
-    margin: 15px 0 5px;
+    margin: 15px 0 10px;
     line-height: 1.5rem;
     font-size: 16px;
     opacity: 0.9;

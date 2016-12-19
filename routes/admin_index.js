@@ -35,7 +35,7 @@ router.post('/', function(req, res) {
         author: author,
         tags: tags
       });
-      newPost.save(function (err) {
+      newPost.save(function (err){
         if (err) {
           console.error(err);
           return;

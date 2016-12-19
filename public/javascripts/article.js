@@ -12,7 +12,7 @@ $(function(){
       $(this).find('i').removeClass('fa-angle-down').addClass('fa-angle-up');
     }
   })
-  $(".content").each(function(){
+  $(".content_short").each(function(){
     var maxwidth = 250;
     if($(this).text().length>maxwidth){
       $(this).html($(this).html().substring(0,maxwidth));

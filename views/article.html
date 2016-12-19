@@ -6,9 +6,39 @@
   <meta name="Author" content=""/>
   <meta name="keywords" content=""/>
   <meta name="description" content=""/>
-  <title>DorisBlog</title>
-  <link type="text/css" rel="stylesheet" href="stylesheets/article.css"/>
+  <title>Articles | DorisBlog</title>
+  <link type="text/css" rel="stylesheet" href="/stylesheets/article.css"/>
   <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <script type="text/javascript" src="/javascripts/jquery-1.12.0.2.js"></script>
+  <script type="text/javascript" src="/javascripts/article.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      $('.readMore').click(function(){
+        var articleId = $(this).attr('article-id');
+        var articleTitle = $(this).attr('article-title');
+        var prevId = $(this).attr('prev_article-id');
+        var nextId = $(this).attr('next_article-id');
+        var prevTitle = $(this).attr('prev_article-title');
+        var nextTitle = $(this).attr('next_article-title');
+        var postData = {
+          'articleId':articleId,
+          'articleTitle':articleTitle,
+          'prevId': prevId,
+          'nextId': nextId,
+          'prevTitle': prevTitle,
+          'nextTitle': nextTitle
+        };
+        console.log(postData);
+//        $.ajax({
+//          url:'/article/details',
+//          type:'GET',
+//          data: postData
+//        });
+        location.href = '/article/details?articleTitle='+articleTitle+'&articleId='+articleId;
+      })
+    })
+  </script>
+
 </head>
 <body>
 <header class="header">
@@ -16,7 +46,7 @@
   <div class="header-mask">
     <div class="header-outside">
       <div class="outwrap mylogo">
-        <img src="  images/mypic.png" alt="DorisHuang'picture"><br>
+        <img src="/images/mypic.png" alt="DorisHuang'picture"><br>
         <p>Doris'blog</p>
       </div>
       <div class="word">Stay hungry,keep thinking</div>
@@ -37,18 +67,19 @@
       <ul class="nav">
         <li><a href="../">首页</a></li>
         <i class="fa fa-angle-right"></i>
-        <li class="current"><a href="javascript:;">文章</a></li>
+        <li><a href="javascript:;" class="current">文章</a></li>
       </ul>
       <!--<p class="prev_link plink"><i class="fa fa-angle-double-left"></i><a href="">上一篇文章</a></p>-->
       <!--<p class="next_link plink"><a href="">下一篇文章</a><i class="fa fa-angle-double-right"></i></p>-->
-      <ul class="article-list">
-        <% for( var i = 0; i< content.length; i++ ){ %>
+      <ul class="article-list smaller_ptop">
+        <% for( var i = 1; i< content.length-1; i++ ){ %>
         <li>
             <h3 class="title"><a href=""><%= content[i].title %></a></h3>
             <small><span class="date"><%= content[i].date %></span><span style="margin: 0 6px">by</span><span class="author"><%= content[i].author %></span></small>
-            <div class="content"><%- content[i].content %>
+            <div class="content content_short"><%- content[i].content %>
             </div>
-            <a href="#" class="readMore">阅读全文...</a>
+            <a href="#" class="readMore" article-id="<%= content[i]._id %>" article-title="<%= content[i].title %>" prev_article-id="<%= content[i-1]._id %>" prev_article-title="<%= content[i-1].title %>"
+               next_article-id="<%= content[i+1]._id %>" next_article-title="<%= content[i+1].title %>">阅读全文...</a>
             <p class="tag"><i class="fa fa-tag"></i>
               <% content[i].tags.forEach(function(element){ %>
               <a href=""><%= element %></a>
@@ -62,7 +93,5 @@
   <div class="wrapper-right"></div>
 </div>
 
-<script type="text/javascript" src="javascripts/jquery-1.12.0.2.js"></script>
-<script type="text/javascript" src="javascripts/article.js"></script>
 </body>
 </html>
