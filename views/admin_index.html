@@ -10,7 +10,7 @@
     $(function() {
       // 发布
       $('.btn-publish').on('click', function() {
-        var blogContent = $('.textarea-add').val().trim().replace(/\n/g, '<br/>');
+        var blogContent = $('.textarea-add').val();
         var blogTitle = $("#title").val().trim();
         var blogAuthor = $("#author").val().trim();
         var blogTags = $("#tags").val().trim();
@@ -44,6 +44,7 @@
           'date': yy + '-' + MM + '-' + dd + ' ' + hh + ':' + mm + ':' + ss,
           'tags': blogTags
         };
+        console.log(blogContent);
         $.ajax({
           url: '/admin',
           type: 'post',
@@ -70,6 +71,7 @@
             type: 'post',
             data: postData,
             success: function(data){
+              console.log(postData);
               location.href = '/admin';
             },
             error: function(data){

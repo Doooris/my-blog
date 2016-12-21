@@ -39,6 +39,25 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+//给express注册markdown渲染器
+//app.configure('development', function(){
+//  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+//});
+//
+//app.configure('production', function(){
+//  app.use(express.errorHandler());
+//});
+//
+//app.register('.md',{
+//  compile:function(str,options){
+//    var html=markdown.makeHtml(str);
+//    return function(locals){
+//      return html.replace(/\{([^}]+)\}/g,function(_,name){
+//        return locals[name];
+//      });
+//    }
+//  }
+//});
 
 // error handler
 app.use(function(err, req, res, next) {

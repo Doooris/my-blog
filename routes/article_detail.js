@@ -3,6 +3,7 @@
  */
 var express = require('express');
 var router = express.Router();
+markdown = require('markdown').markdown;
 
 router.get('/details', function(req, res, next) {
   var articleId = req.query.articleId;
@@ -18,6 +19,7 @@ router.get('/details', function(req, res, next) {
       console.error(err);
       return;
     }
+      doc.content = markdown.toHTML(doc.content);
     //var author = doc.author;
     //var tags = doc.tags;
     res.render('article_detail', {prevId:prevId,prevTitle: prevTitle,nextId: nextId,nextTitle: nextTitle,content: doc });

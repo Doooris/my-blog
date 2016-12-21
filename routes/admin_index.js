@@ -3,6 +3,7 @@
  */
 var express = require('express');
 var router = express.Router();
+markdown = require('markdown').markdown;
 
 /* GET admin page. */
 router.get('/', function(req, res, next) {
@@ -11,6 +12,9 @@ router.get('/', function(req, res, next) {
       console.error(err);
       return;
     }
+    docs.forEach(function (doc){
+      doc.content = markdown.toHTML(doc.content);
+    });
   res.render('admin_index', { title: '博客后台发布页', name: '发布博客',content: docs});
 });
 });

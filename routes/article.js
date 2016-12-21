@@ -3,6 +3,7 @@
  */
 var express = require('express');
 var router = express.Router();
+markdown = require('markdown').markdown;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -11,6 +12,9 @@ router.get('/', function(req, res, next) {
       console.error(err);
       return;
     }
+    docs.forEach(function (doc){
+      doc.content = markdown.toHTML(doc.content);
+    });
   res.render('article', { content: docs });
 });
 });

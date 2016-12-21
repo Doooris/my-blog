@@ -1,4 +1,4 @@
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+body, div{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -6,22 +6,11 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fiel
 body {
     padding-top: 250px;
     background: #fff;
-    color: #555;
+    /*color: #555;*/
     width: 100%;
     min-width: 480px;
     font-size: 14px;
     font-family: Georgia,sans-serif;
-}
-td, th, caption {
-    font-size: 14px;
-}
-h1, h2, h3, h4, h5, h6 {
-    font-weight: normal;
-    font-size: 100%;
-}
-address, caption, cite, code, dfn, em, strong, th, var {
-    font-style: normal;
-    font-weight: normal;
 }
 a {
     color: #555;
@@ -34,9 +23,6 @@ a:hover {
 ol, ul, li {
     list-style: none;
 }
-table {
-    border-collapse: collapse;
-}
 /* css common */
 .clearfix:after {
     content: ".";
@@ -44,9 +30,6 @@ table {
     height: 0;
     clear: both;
     visibility: hidden;
-}
-.clearfix {
-    *zoom: 1;
 }
 .filterBlack{
     filter: brightness(.5);
@@ -90,7 +73,9 @@ div.mylogo{
 }
 div.mylogo p{
     font-size: 22px;
-    color: rgba(255,255,255,0.6);;
+    color: rgba(255,255,255,0.6);
+    /*border: 1px solid red;*/
+    margin-top: 0;
 }
 div.mylogo img{
     width: 100%;
@@ -124,18 +109,26 @@ header .search input{
     width: 280px;
     font-size: 15px;
     border-radius: 4px;
-    padding-left: 10px;
+    padding: 0 23px 0 10px;
     background: rgba(255,255,255,0.8);
     overflow: hidden;
     color: rgba(0,0,0,0.5);
+    /*border: 1px solid red;*/
 }
 header .search i{
+    width: 28px;
+    height: 30px;
     position: absolute;
-    font-size: 17px;
-    opacity: 0.6;
+    text-align: center;
+    /*border: 1px solid black;*/
+    font-size: 16px;
+    opacity: 0.4;
     line-height: 30px;
-    right: 5px;
+    right: 0;
     cursor: pointer;
+}
+header .search i:hover{
+    opacity: 0.3;
 }
 header .arrow{
 
@@ -167,17 +160,17 @@ header .arrow:hover{
     /*border: 1px solid red;*/
 }
 .wrapper-left{
-    margin-right: 310px;
+    margin-right: 320px;
     background: #F1F1F1;
-    padding: 20px 30px;
-    box-shadow: 0 -1px 2px #ccc;
+    padding: 20px 90px 20px 20px;
+    /*box-shadow: 0 -1px 2px #ccc;*/
     /*border: 1px solid blue;*/
 }
 .wrapper-right{
-    box-shadow: 0 -1px 2px #ccc;
+    /*box-shadow: 0 -1px 2px #ccc;*/
     width: 300px;
     float: left;
-    background: #F1F1F1;
+    /*background: #F1F1F1;*/
     margin-left: -300px;
     height: 500px;
 }
@@ -214,9 +207,11 @@ header .arrow:hover{
     padding-top:40px;
 }
 .smaller_ptop{
-    padding-top: 20px;
+    padding-top: 10px;
 }
 .article-list li{
+    font-family: Georgia,Serif;
+
     margin-top: 40px;
     /*border: 1px solid red;*/
     border-bottom: 1px dashed rgba(0,0,0,0.2);
@@ -224,13 +219,13 @@ header .arrow:hover{
 }
 .article-list .title a{
     display: block;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 400;
     opacity: 0.8;
     color: #2e486f;
-    line-height: 2.5rem;
+    line-height: 1.5rem;
     text-decoration: none;
-
+    margin-bottom: -0.5rem;
 }
 .article-list .title a:hover,.article-list .comment a:hover,.article-list .readMore:hover{
     color: #4870ad;
@@ -241,16 +236,16 @@ header .arrow:hover{
 }
 .article-list .readMore{
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 2.5rem;
 }
 .article-list .tag i{
-    font-size: 15px;
-    opacity: 0.8;
+    font-size: 17px;
+    opacity: 0.6;
 }
 .article-list .comment i{
-    font-size: 13px;
-    opacity: 0.8;
+    font-size: 15px;
+    opacity: 0.6;
 }
 .article-list .tag a{
     background: rgba(0,0,0,0.3);
@@ -269,11 +264,16 @@ header .arrow:hover{
     opacity: 0.9;
 }
 .article-list .content{
-    margin: 15px 0 10px;
-    line-height: 1.5rem;
+    margin: 2rem 0 1rem;
+    line-height: 2rem;
     font-size: 16px;
-    opacity: 0.9;
+    opacity: 0.8;
     text-align: justify;
+}
+.content blockquote{
+    background-color: #e8e8e8;
+    padding-left: 0.5rem;
+    border-left: 5px solid #bababa;
 }
 
 
