@@ -6,24 +6,22 @@ var router = express.Router();
 markdown = require('markdown').markdown;
 
 router.get('/details', function(req, res, next) {
-  var articleId = req.query.articleId;
-  var articleTitle = req.query.articleTitle;
-  var prevId = req.body.prevId;
-  var nextId = req.body.nextId;
-  var prevTitle = req.body.prevTitle;
-  var nextTitle = req.body.nextTitle;
-  console.log('prevId:'+prevId);
-  console.log('nextId:'+nextId);
-  post.findOne({'_id':articleId},function(err, doc){
+  var order = parseInt(req.query.order);
+  post.find({},null,{sort:'-date'},function(err, docs){
     if(err){
       console.error(err);
       return;
     }
+    var size = docs.length;
+    docs.forEach(function (doc){
       doc.content = markdown.toHTML(doc.content);
-    //var author = doc.author;
-    //var tags = doc.tags;
-    res.render('article_detail', {prevId:prevId,prevTitle: prevTitle,nextId: nextId,nextTitle: nextTitle,content: doc });
+    });
+    console.log("order="+order);
+    res.render('article_detail', {order: order,size:size,content: docs });
   });
 });
+//router.post('/details',function(req,res){
+//
+//})
 
 module.exports = router;

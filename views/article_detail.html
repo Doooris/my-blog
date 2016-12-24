@@ -3,14 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="Content-Language" content="zh-CN"/>
-  <meta name="Author" content="<%= content.author %>"/>
-  <meta name="keywords" content="<%= content.tags %>"/>
+  <meta name="Author" content="<%= content[order-1].author %>"/>
+  <meta name="keywords" content="<%= content[order-1].tags %>"/>
   <meta name="description" content=""/>
-  <title><%= content.title %> | Article | DorisBlog</title>
+  <title><%= content[order-1].title %> | Article | DorisBlog</title>
   <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="/stylesheets/custom_article.css"/>
   <script type="text/javascript" src="/javascripts/jquery-1.12.0.2.js"></script>
-  <script type="text/javascript" src="/javascripts/article.js"></script>
+  <script>
+    $(function(){
+      $('header .arrow').click(function(){
+        if($(this).children().hasClass('fa-angle-up')) {
+          $('.header').animate({top: '-220px'}, 300).parent().animate({'padding-top': '30px'}, 300);
+          $(this).find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
+        }else{
+          $('.header').animate({top: '0px'}, 600).parent().animate({'padding-top': '250px'}, 600);
+          $(this).find('i').removeClass('fa-angle-down').addClass('fa-angle-up');
+        }
+      })
+      $(".content_short").each(function(){
+        var maxwidth = 250;
+        if($(this).text().length>maxwidth){
+          $(this).html($(this).html().substring(0,maxwidth));
+          $(this).html($(this).html()+"......");
+        }
+      })
+      $(".plink").click(function(){
+
+      })
+
+    })
+  </script>
 </head>
 <body>
 <header class="header">
@@ -41,17 +64,21 @@
         <i class="fa fa-angle-right"></i>
         <li><a href="../article">文章</a></li>
         <i class="fa fa-angle-right"></i>
-        <li><a href="javascript:;" class="current"><%= content.title %></a></li>
+        <li><a href="javascript:;" class="current"><%= content[order-1].title %></a></li>
       </ul>
-      <p class="prev_link plink"><i class="fa fa-angle-double-left"></i><a href="" prevId="<%= prevId %>">上一篇:<%= prevTitle %></a></p>
-      <p class="next_link plink"><a href="" nextId="<%= nextId %>">下一篇：<%= nextTitle %></a><i class="fa fa-angle-double-right"></i></p>
+      <% if(order > 1){ %>
+      <p class="prev_link plink"><i class="fa fa-angle-double-left"></i><a href="/article/details?articleTitle=<%= content[order-2].title %>&order=<%= order-1 %>">上一篇:<%= content[order-2].title %></a></p>
+      <% } %>
+      <% if(order < size){ %>
+      <p class="next_link plink"><a href="/article/details?articleTitle=<%= content[order].title %>&order=<%= order+1 %>">下一篇：<%= content[order].title %></a><i class="fa fa-angle-double-right"></i></p>
+      <% } %>
       <ul class="article-list">
         <li>
-          <h3 class="title"><a href=""><%= content.title %></a></h3>
-          <small><span class="date"><%= content.date %></span><span style="margin: 0 6px">by</span><span class="author"><%= content.author %></span></small>
-          <div class="content"><%- content.content %></div>
+          <h3 class="title"><a href="javascript:;"><%= content[order-1].title %></a></h3>
+          <small><span class="date"><%= content[order-1].date %></span><span style="margin: 0 6px">by</span><span class="author"><%= content[order-1].author %></span></small>
+          <div class="content"><%- content[order-1].content %></div>
           <p class="tag"><i class="fa fa-tag"></i>
-            <% content.tags.forEach(function(element){ %>
+            <% content[order-1].tags.forEach(function(element){ %>
             <a href=""><%= element %></a>
             <% }) %>
           <p class="comment"><i class="fa fa-comment"></i><a>5条评论&gt;&gt;</a></p>

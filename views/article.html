@@ -14,27 +14,9 @@
   <script type="text/javascript">
     $(function(){
       $('.readMore').click(function(){
-        var articleId = $(this).attr('article-id');
         var articleTitle = $(this).attr('article-title');
-        var prevId = $(this).attr('prev_article-id');
-        var nextId = $(this).attr('next_article-id');
-        var prevTitle = $(this).attr('prev_article-title');
-        var nextTitle = $(this).attr('next_article-title');
-        var postData = {
-          'articleId':articleId,
-          'articleTitle':articleTitle,
-          'prevId': prevId,
-          'nextId': nextId,
-          'prevTitle': prevTitle,
-          'nextTitle': nextTitle
-        };
-        console.log(postData);
-//        $.ajax({
-//          url:'/article/details',
-//          type:'GET',
-//          data: postData
-//        });
-        location.href = '/article/details?articleTitle='+articleTitle+'&articleId='+articleId;
+        var order = $(this).attr('order');
+        location.href = '/article/details?articleTitle='+articleTitle+'&order='+order;
       })
     })
   </script>
@@ -69,16 +51,15 @@
         <i class="fa fa-angle-right"></i>
         <li><a href="javascript:;" class="current">文章</a></li>
       </ul>
-      <!--<p class="prev_link plink"><i class="fa fa-angle-double-left"></i><a href="">上一篇文章</a></p>-->
-      <!--<p class="next_link plink"><a href="">下一篇文章</a><i class="fa fa-angle-double-right"></i></p>-->
       <ul class="article-list smaller_ptop">
-        <% for( var i = 0; i< content.length; i++ ){ %>
+        <% for( var i = 8 * p; i< 8 * (p+1) ; i++ ){ %>
+        <% if(i < size ) { %>
         <li>
-            <h3 class="title"><a href=""><%= content[i].title %></a></h3>
+          <h3 class="title"><a href="article/details?articleTitle=<%= content[i].title %>&order=<%- i+1 %>"><%= content[i].title %></a></h3>
             <small><span class="date"><%= content[i].date %></span><span style="margin: 0 6px">by</span><span class="author"><%= content[i].author %></span></small>
             <div class="content content_short"><%- content[i].content %>
             </div>
-            <a href="#" class="readMore" article-id="<%= content[i]._id %>" article-title="<%= content[i].title %>">阅读全文...</a>
+          <a href="#" class="readMore" articleTitle="<%= content[i].title %>" order="<%- i+1 %>">阅读全文...</a>
             <p class="tag"><i class="fa fa-tag"></i>
               <% content[i].tags.forEach(function(element){ %>
               <a href=""><%= element %></a>
@@ -86,6 +67,36 @@
             <p class="comment"><i class="fa fa-comment"></i><a>5条评论&gt;&gt;</a></p>
         </li>
         <% } %>
+        <% } %>
+        <div class="paging-bar">
+          <% if( p > 0) { %>
+          <a href="/article/?p=<%- p-1 %>" class="btn-page btn-prev_page">上一页</a>
+          <% } %>
+
+          <% if( p > 1) { %>
+          <a href="/article/?p=0" class="btn-page btn-first_page">1</a>
+          <% } %>
+
+          <% if( p > 1) { %>
+          <span class="points-page">...</span>
+          <% } %>
+
+          <a href="/article/?p=<%- p %>" class="btn-page current-page"><%- p+1 %></a>
+
+          <% if( p < j-2) { %>
+          <span class="points-page">...</span>
+          <% } %>
+
+          <% if( p < j-1) { %>
+          <a href="/article/?p=<%- j-1 %>" class="btn-page btn-last_page"><%- j %></a>
+          <% } %>
+
+          <% if( j > 2) { %>
+          <% if( p < j-1) { %>
+          <a href="/article/?p=<%- p+1 %>" class="btn-page btn-next_page">下一页</a>
+          <% } %>
+          <% } %>
+        </div>
       </ul>
     </div>
   </div>

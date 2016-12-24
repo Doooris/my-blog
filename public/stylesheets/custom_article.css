@@ -205,13 +205,36 @@ header .arrow:hover{
 .article-list{
     width: 100%;
     padding-top:40px;
+    padding-bottom: 20px;
+    /*border: 1px solid red;*/
+}
+.article-list .paging-bar{
+    /*border: 1px solid green;*/
+    margin: 20px 0;
+    font-size: 18px;
+
+}
+.article-list .paging-bar .current-page,.article-list .paging-bar .current-page:hover{
+    background: rgba(0,0,0,0.2);
+    color: rgba(0,0,0,0.7);;
+}
+.article-list .btn-page{
+    background: rgba(0,0,0,0.5);
+    color: #F1F1F1;
+    margin-right: 0.5rem;
+    padding: 0.2rem 0.4rem;
+    border-radius: 1px;
+}
+.article-list .btn-page:hover{
+    text-decoration: none;
+    background: rgba(0,0,0,0.6);
+
 }
 .smaller_ptop{
     padding-top: 10px;
 }
 .article-list li{
     font-family: Georgia,Serif;
-
     margin-top: 40px;
     /*border: 1px solid red;*/
     border-bottom: 1px dashed rgba(0,0,0,0.2);
@@ -248,7 +271,7 @@ header .arrow:hover{
     opacity: 0.6;
 }
 .article-list .tag a{
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.4);
     color: white;
     padding: 0.2rem 0.4rem;
     border-radius: 2px;

@@ -19,4 +19,15 @@ $(function(){
       $(this).html($(this).html()+"......");
     }
   })
+  //var str_search = location.search;
+  //var arry_search = str_search.substring(1).split("&");
+  //var arry_size = arry_size[3].split("=");
+  //var size = parseInt(arry_size[1]);
+  //alert("size="+size);
+  //if(($(".plink a").attr("order") !== -1) && ($(".plink a").attr("order") !== size)){
+  //
+  //}else{
+  //  $(".plink").css("display","none");
+  //}
+
 })

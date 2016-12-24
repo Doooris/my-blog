@@ -7,7 +7,7 @@ markdown = require('markdown').markdown;
 
 /* GET admin page. */
 router.get('/', function(req, res, next) {
-  post.find({}, null, {sort: {date: -1}},function(err, docs){
+  post.find({}, null, {sort: {date: -1},},function(err, docs){
     if(err){
       console.error(err);
       return;

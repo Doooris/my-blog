@@ -7,6 +7,9 @@ markdown = require('markdown').markdown;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  var p = req.query.p?req.query.p:0;
+  p = parseInt(p);
+  console.log("p="+p);
   post.find({},null,{sort:'-date'},function(err, docs){
     if(err){
       console.error(err);
@@ -15,7 +18,10 @@ router.get('/', function(req, res, next) {
     docs.forEach(function (doc){
       doc.content = markdown.toHTML(doc.content);
     });
-  res.render('article', { content: docs });
+    var size = docs.length;
+    var j = Math.ceil(size/8);
+    console.log("size="+size+";j="+j);
+  res.render('article', { size:size,j:j,p:p,content: docs });
 });
 });
 

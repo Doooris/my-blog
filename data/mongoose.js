@@ -11,11 +11,11 @@ var blogSchema = new mongoose.Schema({
   content: String,
   date: String,
   tags: [{type:String}],
-  article_id: {type: Number, unique:true},
-  about_id: {
-    prev_id: Number,
-    next_id: Number
-  }
+  //article_id: {type: Number, unique:true},
+  //about_id: {
+  //  prev_id: Number,
+  //  next_id: Number
+  //}
 }, {collection: 'post'});
 
 var post = mongoose.model('post', blogSchema);
