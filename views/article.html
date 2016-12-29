@@ -11,26 +11,16 @@
   <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
   <script type="text/javascript" src="/javascripts/jquery-1.12.0.2.js"></script>
   <script type="text/javascript" src="/javascripts/article.js"></script>
-  <script type="text/javascript">
-    $(function(){
-      $('.readMore').click(function(){
-        var articleTitle = $(this).attr('article-title');
-        var order = $(this).attr('order');
-        location.href = '/article/details?articleTitle='+articleTitle+'&order='+order;
-      })
-    })
-  </script>
-
 </head>
 <body>
 <header class="header">
 <!-- fixed nav begin here-->
   <div class="header-mask">
     <div class="header-outside">
-      <div class="outwrap mylogo">
-        <img src="/images/mypic.png" alt="DorisHuang'picture"><br>
-        <p>Doris'blog</p>
-      </div>
+      <a class="outwrap mylogo" href="../">
+        <img class="img-anim" src="/images/mypic.png" alt="DorisHuang'picture"><br>
+        <p class="p-anim">Doris'blog</p>
+      </a>
       <div class="word">Stay hungry,keep thinking</div>
       <div class="search">
         <div class="search-inside">
@@ -45,22 +35,21 @@
 <!--article section begins-->
 <div class="wrapper">
   <div class="wrapper-left_out">
-    <div class="wrapper-left">
-      <ul class="nav">
+    <div class="wrapper-left content-anim">
+      <ul class="nav ">
         <li><a href="../">首页</a></li>
         <i class="fa fa-angle-right"></i>
         <li><a href="javascript:;" class="current">文章</a></li>
       </ul>
-      <ul class="article-list smaller_ptop">
+      <ul class="article-list ">
         <% for( var i = 8 * p; i< 8 * (p+1) ; i++ ){ %>
         <% if(i < size ) { %>
         <li>
-          <h3 class="title"><a href="article/details?articleTitle=<%= content[i].title %>&order=<%- i+1 %>"><%= content[i].title %></a></h3>
-            <small><span class="date"><%= content[i].date %></span><span style="margin: 0 6px">by</span><span class="author"><%= content[i].author %></span></small>
-            <div class="content content_short"><%- content[i].content %>
-            </div>
-          <a href="#" class="readMore" articleTitle="<%= content[i].title %>" order="<%- i+1 %>">阅读全文...</a>
-            <p class="tag"><i class="fa fa-tag"></i>
+          <h3 class="title"><a href="/article/details?articleTitle=<%= content[i].title %>&order=<%- i+1 %>"><%= content[i].title %></a></h3>
+          <small><span class="date"><%= content[i].date %></span><span style="margin: 0 6px">by</span><span class="author"><%= content[i].author %></span></small>
+          <div class="content content_short"><%- content[i].content %></div>
+          <a href="/article/details?articleTitle=<%= content[i].title %>&order=<%- i+1 %>" class="readMore">阅读全文...</a>
+          <p class="tag"><i class="fa fa-tag"></i>
               <% content[i].tags.forEach(function(element){ %>
               <a href=""><%= element %></a>
                           <% }) %>
@@ -100,7 +89,41 @@
       </ul>
     </div>
   </div>
-  <div class="wrapper-right"></div>
+  <div class="wrapper-right">
+    <div class="right-top">
+    <div class="social_contact-box">
+      <p class="follow">关注我</p>
+      <ul class="social-contact">
+        <li class="rss"><a href=""><i class="fa fa-rss"></i></a></li>
+        <li class="github"><a href="https://github.com/Doooris"><i class="fa fa-github"></i></a></li>
+        <li class="weibo"><a href="http://weibo.com/2731473063/profile"><i class="fa fa-weibo"></i></a></li>
+        <li class="weixin">
+          <a href="">
+            <i class="fa fa-weixin"></i>
+            <div class="code-area">
+              <div class="code-triangle"></div>
+              <div class="code-box">
+                <img src="http://7pn4yj.com1.z0.glb.clouddn.com/erweima.jpg" alt="">
+              关注Doris微信公众平台
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="author_intro-box">
+      <div class="author-pic">
+        <img src="/images/mycolor.jpg" alt="doris' picture">
+      </div>
+      <div class="author-info">
+        <p>14届东华大学毕业生,曾就职于华润万家.热爱烹饪,健身,编程.世界太大,所知太少,抱终身学习态度.</p>
+        <i class="fa fa-envelope">hxpt2031@gmail.com</i>
+      </div>
+    </div>
+    </div>
+
+
+  </div>
 </div>
 
 </body>

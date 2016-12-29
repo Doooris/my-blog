@@ -5,10 +5,10 @@
 $(function(){
   $('header .arrow').click(function(){
     if($(this).children().hasClass('fa-angle-up')) {
-      $('.header').animate({top: '-220px'}, 300).parent().animate({'padding-top': '30px'}, 300);
+      $('.header').animate({top: '-153px'}, 300).parent().animate({'padding-top': '67px'}, 300);
       $(this).find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
     }else{
-      $('.header').animate({top: '0px'}, 600).parent().animate({'padding-top': '250px'}, 600);
+      $('.header').animate({top: '0px'}, 600).parent().animate({'padding-top': '220px'}, 600);
       $(this).find('i').removeClass('fa-angle-down').addClass('fa-angle-up');
     }
   })
@@ -19,15 +19,9 @@ $(function(){
       $(this).html($(this).html()+"......");
     }
   })
-  //var str_search = location.search;
-  //var arry_search = str_search.substring(1).split("&");
-  //var arry_size = arry_size[3].split("=");
-  //var size = parseInt(arry_size[1]);
-  //alert("size="+size);
-  //if(($(".plink a").attr("order") !== -1) && ($(".plink a").attr("order") !== size)){
-  //
-  //}else{
-  //  $(".plink").css("display","none");
-  //}
-
+  $(".social-contact .weixin>a").hover(function(){
+    $(".code-area").show();
+  },function(){
+    $(".code-area").hide();
+  })
 })

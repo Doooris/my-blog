@@ -14,10 +14,10 @@
     $(function(){
       $('header .arrow').click(function(){
         if($(this).children().hasClass('fa-angle-up')) {
-          $('.header').animate({top: '-220px'}, 300).parent().animate({'padding-top': '30px'}, 300);
+          $('.header').animate({top: '-153px'}, 300).parent().animate({'padding-top': '67px'}, 300);
           $(this).find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
         }else{
-          $('.header').animate({top: '0px'}, 600).parent().animate({'padding-top': '250px'}, 600);
+          $('.header').animate({top: '0px'}, 600).parent().animate({'padding-top': '220px'}, 600);
           $(this).find('i').removeClass('fa-angle-down').addClass('fa-angle-up');
         }
       })
@@ -40,10 +40,10 @@
   <!-- fixed nav begin here-->
   <div class="header-mask">
     <div class="header-outside">
-      <div class="outwrap mylogo">
+      <a class="outwrap mylogo" href="../">
         <img src="../images/mypic.png" alt="DorisHuang'picture"><br>
         <p>Doris'blog</p>
-      </div>
+      </a>
       <div class="word">Stay hungry,keep thinking</div>
       <div class="search">
         <div class="search-inside">
@@ -66,12 +66,6 @@
         <i class="fa fa-angle-right"></i>
         <li><a href="javascript:;" class="current"><%= content[order-1].title %></a></li>
       </ul>
-      <% if(order > 1){ %>
-      <p class="prev_link plink"><i class="fa fa-angle-double-left"></i><a href="/article/details?articleTitle=<%= content[order-2].title %>&order=<%= order-1 %>">上一篇:<%= content[order-2].title %></a></p>
-      <% } %>
-      <% if(order < size){ %>
-      <p class="next_link plink"><a href="/article/details?articleTitle=<%= content[order].title %>&order=<%= order+1 %>">下一篇：<%= content[order].title %></a><i class="fa fa-angle-double-right"></i></p>
-      <% } %>
       <ul class="article-list">
         <li>
           <h3 class="title"><a href="javascript:;"><%= content[order-1].title %></a></h3>
@@ -83,6 +77,12 @@
             <% }) %>
           <p class="comment"><i class="fa fa-comment"></i><a>5条评论&gt;&gt;</a></p>
         </li>
+        <% if(order > 1){ %>
+        <p class="prev_link plink"><i class="fa fa-angle-double-left"></i><a href="/article/details?articleTitle=<%= content[order-2].title %>&order=<%= order-1 %>">上一篇:<%= content[order-2].title %></a></p>
+        <% } %>
+        <% if(order < size){ %>
+        <p class="next_link plink"><a href="/article/details?articleTitle=<%= content[order].title %>&order=<%= order+1 %>">下一篇：<%= content[order].title %></a><i class="fa fa-angle-double-right"></i></p>
+        <% } %>
       </ul>
     </div>
   </div>

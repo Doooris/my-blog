@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var multer = require('multer');
+var duoshuo = require('duoshuo');
 
 var index = require('./routes/index');
 var article = require('./routes/article');
@@ -27,6 +28,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(multer({
+  dest: './public/images/article-images',
+  rename: function (fieldname, filename) {
+    return filename;
+  }
+}));
 
 app.use('/', index);
 app.use('/article', article);
