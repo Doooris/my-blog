@@ -7,21 +7,45 @@ markdown = require('markdown').markdown;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var p = req.query.p?req.query.p:0;
+  var p = req.query.p?req.query.p:1;
   p = parseInt(p);
   console.log("p="+p);
+
   post.find({},null,{sort:'-date'},function(err, docs){
     if(err){
       console.error(err);
       return;
     }
+
     docs.forEach(function (doc){
       doc.content = markdown.toHTML(doc.content);
     });
+
     var size = docs.length;
     var j = Math.ceil(size/8);
     console.log("size="+size+";j="+j);
-  res.render('article', { size:size,j:j,p:p,content: docs });
+
+
+    var arry_init =[];
+    var arry_tags =[];
+    var arry_count =[];
+    docs.forEach(function(doc){
+      doc.tags.forEach(function(element){
+        arry_init.push(element);
+      })
+    })
+    for(var i=0;i<arry_init.length;i++){
+      arry_tags.push(arry_init[i]);
+      arry_count[i] = 1;
+      for(var m=i+1;m<arry_init.length;m++){
+        if(arry_init[i] === arry_init[m]){
+          arry_init.splice(m,1);
+          arry_count[i]++;
+          m--;
+        }
+      }
+    }
+  res.render('article', { size:size,j:j,p:p,arry_tags:arry_tags,arry_count:arry_count,content: docs });
 });
 });
 

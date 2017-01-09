@@ -91,21 +91,29 @@ header{
     border: 1px solid black;
 }
 .img-anim{
-    animation: opacity-change 1s ease-out;
+    animation: opacity-change 1s ease-in;
 }
 .wrapper-left .nav{
-    animation: opacity_transform-anim 1s ease;
+    animation: opacity_transform-anim 1s ease-in;
 }
 .wrapper-left .article-list{
-    animation: opacity_transform-anim 1s ease;
+    animation: opacity_transform-anim 1s ease-in;
 }
-.wrapper-right .right-top{
-    animation: opacity_transform-anim 1s ease;
+.wrapper-right{
+    animation: opacity_transform-anim 1s ease-in;
 }
 @-webkit-keyframes opacity_transform-anim{
     0%{
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(-100px);
+    }
+    70%{
+        opacity: 0.7;
+        transform: translateY(30px);
+    }
+    80%{
+        opacity: 0.9;
+        transform: translateY(-15px);
     }
     100%{
         opacity: 1;
@@ -224,9 +232,11 @@ header .arrow:hover{
     /*border: 1px solid blue;*/
 }
 .wrapper-right{
-    /*box-shadow: 0 -1px 2px #ccc;*/
     width: 280px;
     float: left;
+    background: #f4f4f4;
+    padding-left: 5px;
+    padding-right: 5px;
     /*border: 1px solid black;*/
     margin-left: -280px;
     height: 1000px;
@@ -370,7 +380,7 @@ header .arrow:hover{
     font-size: 15px;
 }
 .content blockquote{
-    background-color: #ededed;
+    background-color: #f4f4f4;
     padding-left: 0.5rem;
     border-left: 5px solid #bababa;
 }
@@ -380,11 +390,11 @@ header .arrow:hover{
     padding: 1px 4px;
     border: 1px solid #dddddd;
     border-radius: 3px;
-    background: #fafafa;
+    background: #f4f4f4;
 }
 .content>pre{
     padding: 10px;
-    background: #fafafa;
+    background: #f4f4f4;
     color: #444444;
     -moz-tab-size: 4;
     tab-size: 4;
@@ -433,11 +443,16 @@ header .arrow:hover{
     border-radius: 2px;
     background-color: #69c9d1;
 }
-.wrapper-right .social_contact-box .follow{
+.wrapper-right .title{
     float: left;
     line-height: 20px;
     font-size: 18px;
     color: white;
+}
+.wrapper-right .title2{
+    line-height: 20px;
+    font-size: 18px;
+    color: #353535;
 }
 .wrapper-right .social-contact{
     position: absolute;
@@ -518,6 +533,30 @@ header .arrow:hover{
 .social-contact .code-area img{
     width: 160px;
     height: 160px;
+}
+.wrapper-right .latest li i{
+    opacity: 0.5;
+    margin-right: 10px;
+}
+.wrapper-right ul li{
+    opacity: 0.9;
+
+}
+.wrapper-right li:hover,.wrapper-right .latest li:hover i{
+    color: #070707;
+    opacity: 1;
+    font-weight: bold;
+}
+.label-box ul li{
+    display: inline-block;
+    margin-right: 10px;
+}
+.wrapper-right .article-guide{
+    padding: 6px;
+}
+.wrapper-right .article-guide ul{
+    padding: 0;
+    line-height: 1.5rem;
 }
 
 

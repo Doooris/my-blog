@@ -5,9 +5,11 @@
 $(function(){
   $('header .arrow').click(function(){
     if($(this).children().hasClass('fa-angle-up')) {
+      $(this).attr("status","0");
       $('.header').animate({top: '-153px'}, 300).parent().animate({'padding-top': '67px'}, 300);
       $(this).find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
     }else{
+      $(this).attr("status","1");
       $('.header').animate({top: '0px'}, 600).parent().animate({'padding-top': '220px'}, 600);
       $(this).find('i').removeClass('fa-angle-down').addClass('fa-angle-up');
     }

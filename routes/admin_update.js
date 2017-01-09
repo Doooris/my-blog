@@ -17,7 +17,8 @@ router.get('/update', function(req, res, next) {
       return;
     }
     var oldContent = data.content;
-    res.render('admin_update', { title: '博客更新页', name: '博客更新',oldTitle: oldTitle,oldAuthor: oldAuthor,oldContent:oldContent,id: Id,oldTags:str_oldTags});
+    //var oldCategory = data.category;
+    res.render('admin_update', { title: '博客更新页', name: '博客更新',oldTitle: oldTitle,oldAuthor: oldAuthor,oldContent: oldContent,id: Id,oldTags: str_oldTags});
   })
 });
 
