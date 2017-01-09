@@ -5,58 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <title><%= title %></title>
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+  <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
   <script type="text/javascript" src="/javascripts/jquery.js"></script>
+  <script type="text/javascript" src="/javascripts/admin_update.js"></script>
 </head>
 <body>
 
-<script>
-  $(function(){
-    $('.btn-update').on('click',function(){
-      var updateTitle = $('#title').val().trim();
-      var updateAuthor = $('#author').val().trim();
-      var updateTags = $('#tags').val().trim();
-      var updateContent = $('.textarea-add').val();
-      var updateId = $('.id').val();
-      if(!updateTitle){
-        alert('请添加上标题!');
-        return;
-      }
-      if (!updateAuthor) {
-        alert('请输入作者!');
-        return;
-      }
-      if (!updateContent) {
-        alert('内容不能为空!');
-        return;
-      }
-      if(!updateTags){
-        alert('请添加至少一条标签!');
-        return;
-      }
-      var postData= {
-        'updateId':updateId,
-        'updateTitle': updateTitle,
-        'updateContent':updateContent,
-        'updateAuthor':updateAuthor,
-        'updateTags':updateTags
-      };
-      $.ajax({
-        url: '/admin/update',
-        type: 'post',
-        data: postData,
-        success: function(data){
-          info = JSON.parse(data.info);
-          alert(info.msg);
-          location.href = '/admin';
-        },
-        error: function(data){
-          alert('更新失败!');
-          location.href = 'error';
-        }
-      });
-    });
-  });
-</script>
 
 <h3 class=""><%= name %></h3>
 <div class="blog-add">
@@ -64,6 +18,18 @@
   <label for="title">标题:<input type="text" id="title" value="<%= oldTitle %>"></label><br/>
   <label for="author">作者:<input type="text" id="author" value="<%= oldAuthor %>"></label><br/>
   <label for="author">标签:<input type="text" id="tags" value="<%= oldTags %>"></label>
+  <div class="category" oldCategory="<%= oldCategory %>" oldCategoryE="<%= oldCategoryE %>">
+    文章分类:<%= oldCategory %>
+    <% for(var x = 0; x < CATEGORYNAME.length; x++) { %>
+    <label for="<%= CATEGORYE[x] %>"><input name='cate-choice' type='radio' class='radio'  id="<%= CATEGORYE[x] %>" value="<%= CATEGORYNAME[x] %>"><%= CATEGORYNAME[x] %></label>
+    <% } %>
+    <button class="btn btn-plus"><i class="fa fa-plus"></i></button>
+    <div class="box-category_add">
+      <label for="categoryname">新添加分类(中):  <input type="text" id="categoryname"></label>
+      <label for="categorynameE">(英):  <input type="text" id="categorynameE"></label>
+      <button class="btn btn-cancle">取消添加</button>
+    </div>
+  </div>
   <div class="blog-textarea">
     <textarea name="" class="textarea-add" cols="30" rows="10"><%= oldContent %></textarea>
   </div>

@@ -39,14 +39,12 @@ router.get('/', function(req, res, next) {
      distinct_caE.push(result[2*a]);
       distinct_ca.push(result[2*a+1]);
     }
-    //console.log(result);
-    //console.log(distinct_ca);
-    //console.log(distinct_caE);
+
     for(var j = 0; j < distinct_length; j++){
       var match = media.every(function (item) {
         return (distinct_ca[j] !== item)
       });
-      console.log('result=' + match);
+      //console.log('result=' + match);
       if (match) {
         var new_category = {};
         new_category[distinct_ca[j]] = distinct_caE[j];
@@ -61,9 +59,6 @@ router.get('/', function(req, res, next) {
       CATEGORYE.push(element[key]);
     }
   })
-  console.log(CATEGORY);
-  console.log(CATEGORYNAME);
-  console.log(CATEGORYE);
   post.find({}, null, {sort: {date: -1}},function(err, docs){
     if(err){
       console.error(err);
@@ -90,20 +85,6 @@ router.post('/', function(req, res) {
   }
   })
     var author = req.body.author;
-
-  //  var match = CATEGORYNAME.every(function(item){
-  //    return(category !== item)
-  //  })
-  //console.log('result='+match);
-  //  if(match){
-  //    var new_category = {};
-  //    new_category[category] = categoryE;
-  //    CATEGORY.push(new_category);
-  //    console.log(CATEGORY);
-  //    console.log(CATEGORYNAME);
-  //    console.log(CATEGORYE);
-  //  }
-
 
     if (content && date && title && author && tags && category) {
       var newPost = new post({
