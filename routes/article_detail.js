@@ -75,7 +75,8 @@ router.get('/details', function(req, res, next) {
     //console.log(arry_category.length);
     console.log(category_count);
     var size = docs.length;
-    res.render('article_detail', {order: order,size:size,arry_tags:arry_tags,tags_count:tags_count,arry_category:arry_category,category_count:category_count,content: docs });
+    var title = docs[order-1].title;
+    res.render('article_detail', {title: title+'| Article | DorisBlog',order: order,size:size,arry_tags:arry_tags,tags_count:tags_count,arry_category:arry_category,category_count:category_count,content: docs });
   });
 });
 //router.post('/details',function(req,res){

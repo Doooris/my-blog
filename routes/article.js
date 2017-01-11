@@ -61,7 +61,7 @@ router.get('/', function(req, res, next) {
         }
       }
     }
-  res.render('article', { size:size,j:j,p:p,arry_tags:arry_tags,tags_count:tags_count,arry_category:arry_category,category_count:category_count,content: docs });
+  res.render('article', {title:'Article | DorisBlog', size:size,j:j,p:p,arry_tags:arry_tags,tags_count:tags_count,arry_category:arry_category,category_count:category_count,content: docs });
 });
 });
 

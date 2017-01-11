@@ -59,7 +59,7 @@ router.get('/category',function(req,res,next){
       });
       category_search = docs;
 
-      res.render('article_category',{name:category,arry_tags:arry_tags,tags_count:tags_count,arry_category:arry_category,category_count:category_count,allArticles:allArticle,content:category_search});
+      res.render('article_category',{title:category+'| Article | DorisBlog',name:category,arry_tags:arry_tags,tags_count:tags_count,arry_category:arry_category,category_count:category_count,content:allArticle,category_search:category_search});
 
     })
 
