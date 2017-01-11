@@ -26,4 +26,12 @@ $(function(){
   },function(){
     $(".code-area").hide();
   })
+
+  var text = $('.nav .current').text();
+  var $current = $('.article-guide ul li a:not(.label-box ul li a)');
+  $current.each(function(index){
+    if($(this).text() == text){
+      $(this).css("color","#62BBC3");
+    }
+  })
 })

@@ -323,16 +323,31 @@ header .arrow:hover{
     text-decoration: none;
     margin-bottom: -0.5rem;
 }
-.article-list .title a:hover,.article-list .comment a:hover,.article-list .readMore:hover,.article-list .content a:hover{
-    color: #62BBC3;
-}
 .article-list li small{
     font-size: 14px;
     opacity: 0.9;
 }
+.article-list li small .prep{
+    margin: 0 4px 0 5px;
+    opacity: 0.7;
+}
+.article-list li small .prep:before{
+    content: "|";
+    margin-right: 5px;
+    opacity: 0.3;
+}
+.article-list li small .by:before{
+    content: "";
+}
+.article-list li small .postOn{
+    font-weight: 600;
+}
+.highlight:hover,.article-list .title a:hover,.article-list .content a:hover{
+    color: #62BBC3;
+}
 .article-list .readMore{
     font-size: 16px;
-    font-weight: 600;
+    font-weight: bold;
     line-height: 2.5rem;
 }
 .article-list .tag i{
@@ -538,14 +553,19 @@ header .arrow:hover{
     opacity: 0.5;
     margin-right: 10px;
 }
-.wrapper-right ul li{
-    opacity: 0.9;
 
+.wrapper-right ul li .num{
+    opacity: 0.6;
+    font-size: 12px;
 }
-.wrapper-right li:hover,.wrapper-right .latest li:hover i{
-    color: #070707;
+.wrapper-right li:hover a,.wrapper-right .latest li:hover i{
+    color: #62BBC3;
     opacity: 1;
     font-weight: bold;
+}
+.wrapper-right #categoryList li{
+    float: left;
+    width: 125px;
 }
 .label-box ul li{
     display: inline-block;

@@ -49,6 +49,7 @@ $(function(){
     }
     var updateId = $('.id').val();
     var updateCategory = updateCategoryName +"," +updateCategoryNameE;
+    //alert(updateCategory);
 
     if(!updateTitle){
       alert('请添加上标题!');

@@ -9,7 +9,7 @@ var CATEGORY = [
   {'html相关': 'html'},
   {'web综合': 'web'},
   {'ps相关': 'ps'},
-  {'工具&平台': 'tools'},
+  {'工具/平台': 'tools'},
   {'生活点滴': 'life'},
   {'工作': 'work'},
   {'旅游': 'travel'}];
@@ -37,7 +37,7 @@ router.get('/update', function(req, res, next) {
     var oldContent = data.content;
     var oldCategory = data.category[0];
     var oldCategoryE = data.category[1];
-    console.log(oldCategory);
+    //console.log(oldCategory);
     res.render('admin_update', { title: '博客更新页', name: '博客更新',oldTitle: oldTitle,oldAuthor: oldAuthor,oldContent: oldContent,id: Id,oldTags: str_oldTags,CATEGORYNAME:CATEGORYNAME,CATEGORYE:CATEGORYE,oldCategory:oldCategory,oldCategoryE:oldCategoryE});
   })
 });

@@ -10,6 +10,7 @@ var duoshuo = require('duoshuo');
 var index = require('./routes/index');
 var article = require('./routes/article');
 var article_detail = require('./routes/article_detail');
+var article_category = require('./routes/article_category');
 var admin_index = require('./routes/admin_index');
 var admin_update = require('./routes/admin_update');
 
@@ -38,6 +39,7 @@ app.use(multer({
 app.use('/', index);
 app.use('/article', article);
 app.use('/article', article_detail);
+app.use('/article', article_category);
 app.use('/admin', admin_index);
 app.use('/admin', admin_update);
 
@@ -76,6 +78,7 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+  console.log(err);
 });
 
 module.exports = app;

@@ -10,7 +10,7 @@ var CATEGORY = [
   {'html相关': 'html'},
   {'web综合': 'web'},
   {'ps相关': 'ps'},
-  {'工具&平台': 'tools'},
+  {'工具/平台': 'tools'},
   {'生活点滴': 'life'},
   {'工作': 'work'},
   {'旅游': 'travel'}];
@@ -48,7 +48,7 @@ router.get('/', function(req, res, next) {
       if (match) {
         var new_category = {};
         new_category[distinct_ca[j]] = distinct_caE[j];
-        console.log(new_category);
+        //console.log(new_category);
         CATEGORY.push(new_category);
       }
     }
