@@ -9,19 +9,50 @@
         <li><a href="javascript:;" class="current"><%= name %></a></li>
       </ul>
       <ul class="article-list ">
-        <% for( var col = 0; col< category_search.length; col++ ){ %>
+        <% for( var i = 8 * (p - 1); i< 8 * p ; i++ ){ %>
+        <% if(i < size ) { %>
         <li>
-          <h3 class="title"><a href="../article/details?articleTitle=<%= category_search[col].title %>&articleId=<%= category_search[col]._id %>" class="highlight"><%= category_search[col].title %></a></h3>
-          <small><%= category_search[col].date %><span class="prep by">by  <%= category_search[col].author %></span><span class="prep">发布在</span><a class="postOn highlight" href="javascript:;"><%= category_search[col].category[0] %></a><span class="prep">阅读</span>123次</small>
-          <div class="content content_short"><%- category_search[col].content %></div>
-          <a href="../article/details?articleTitle=<%= category_search[col].title %>&articleId=<%= category_search[col]._id %>" class="readMore highlight">阅读全文...</a>
+          <h3 class="title"><a href="../article/details?articleTitle=<%= datas[i].title %>&articleId=<%= datas[i]._id %>" class="highlight"><%= datas[i].title %></a></h3>
+          <small><%= datas[i].date %><span class="prep by">by  <%= datas[i].author %></span><span class="prep">发布在</span><a class="postOn highlight" href="javascript:;"><%= datas[i].category[0] %></a><span class="prep">阅读</span>123次</small>
+          <div class="content content_short"><%- datas[i].content %></div>
+          <a href="../article/details?articleTitle=<%= datas[i].title %>&articleId=<%= datas[i]._id %>" class="readMore highlight">阅读全文...</a>
           <p class="tag"><i class="fa fa-tag"></i>
-            <% category_search[col].tags.forEach(function(element){ %>
+            <% datas[i].tags.forEach(function(element){ %>
             <a href=""><%= element %></a>
             <% }) %>
           <p class="comment"><i class="fa fa-comment"></i><a class="highlight">5条评论&gt;&gt;</a></p>
         </li>
         <% } %>
+        <% } %>
+        <div class="paging-bar">
+          <% if( p > 1) { %>
+          <a href="/article/category?category=<%= name %>&p=<%- p-1 %>" class="btn-page btn-prev_page">上一页</a>
+          <% } %>
+
+          <% if( p > 2) { %>
+          <a href="/article/category?category=<%= name %>&p=1" class="btn-page btn-first_page">1</a>
+          <% } %>
+
+          <% if( p > 2) { %>
+          <span class="points-page">...</span>
+          <% } %>
+
+          <a href="/article/category?category=<%= name %>&p=<%- p %>" class="btn-page current-page"><%- p %></a>
+
+          <% if( p < j-1) { %>
+          <span class="points-page">...</span>
+          <% } %>
+
+          <% if( p < j) { %>
+          <a href="/article/category?category=<%= name %>&p=<%- j %>" class="btn-page btn-last_page"><%- j %></a>
+          <% } %>
+
+          <% if( j > 2) { %>
+          <% if( p < j) { %>
+          <a href="/article/category?category=<%= name %>&p=<%- p+1 %>" class="btn-page btn-next_page">下一页</a>
+          <% } %>
+          <% } %>
+        </div>
       </ul>
 
     </div>

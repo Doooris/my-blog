@@ -6,26 +6,28 @@ var router = express.Router();
 markdown = require('markdown').markdown;
 
 router.get('/category',function(req,res,next){
+  var category = req.query.category;
+  post.find({},null,{sort:'-date'},function(err,docs){
+    if(err){
+      console.error(err);
+      return;
+    }
+
+
+
     var tags_init =[];
     var arry_tags =[];
     var tags_count =[];
     var category_init = [];
     var arry_category = [];
     var category_count = [];
-    var category = req.query.category;
     //var allArticles = [];
-    var category_search = [];
-  post.find({},null,{sort:'-date'},function(err,allArticle){
-    if(err){
-      console.error(err);
-      return;
-    }
     //allArticles = allArticle;
-    allArticle.forEach(function(article){
-      article.tags.forEach(function(element){
+    docs.forEach(function(doc){
+      doc.tags.forEach(function(element){
         tags_init.push(element);
       });
-      category_init.push(article.category[0]);
+      category_init.push(doc.category[0]);
     });
     for(var i=0;i<tags_init.length;i++){
       arry_tags.push(tags_init[i]);
@@ -49,17 +51,21 @@ router.get('/category',function(req,res,next){
         }
       }
     }
-    post.find({'category':category},null,{sort:'-date'},function(err,docs){
+    post.find({'category':category},null,{sort:'-date'},function(err,datas){
+      var p = req.query.p?req.query.p:1;
+      p = parseInt(p);
       if(err){
         console.error(err);
         return;
       }
-      docs.forEach(function(doc){
-        doc.content = markdown.toHTML(doc.content);
+      datas.forEach(function(data){
+        data.content = markdown.toHTML(data.content);
       });
-      category_search = docs;
+      var size = datas.length;
+      var j = Math.ceil(size/8);
+      console.log("size="+size+";j="+j+"p="+p);
 
-      res.render('article_category',{title:category+'| Article | DorisBlog',name:category,arry_tags:arry_tags,tags_count:tags_count,arry_category:arry_category,category_count:category_count,content:allArticle,category_search:category_search});
+      res.render('article_category',{title:category+'| Article | DorisBlog',name:category,size:size,j:j,p:p,arry_tags:arry_tags,tags_count:tags_count,arry_category:arry_category,category_count:category_count,content:docs,datas:datas});
 
     })
 
