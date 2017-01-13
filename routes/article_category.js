@@ -4,6 +4,7 @@
 var express = require('express');
 var router = express.Router();
 markdown = require('markdown').markdown;
+var getArry = require('./category_tags');
 
 router.get('/category',function(req,res,next){
   var category = req.query.category;
@@ -12,45 +13,11 @@ router.get('/category',function(req,res,next){
       console.error(err);
       return;
     }
+    var arry_tags = getArry.getTags(docs)[0];
+    var tags_count =getArry.getTags(docs)[1];
+    var arry_category = getArry.getCategory(docs)[0];
+    var category_count = getArry.getCategory(docs)[1];
 
-
-
-    var tags_init =[];
-    var arry_tags =[];
-    var tags_count =[];
-    var category_init = [];
-    var arry_category = [];
-    var category_count = [];
-    //var allArticles = [];
-    //allArticles = allArticle;
-    docs.forEach(function(doc){
-      doc.tags.forEach(function(element){
-        tags_init.push(element);
-      });
-      category_init.push(doc.category[0]);
-    });
-    for(var i=0;i<tags_init.length;i++){
-      arry_tags.push(tags_init[i]);
-      tags_count[i] = 1;
-      for(var m=i+1;m<tags_init.length;m++){
-        if(tags_init[i] === tags_init[m]){
-          tags_init.splice(m,1);
-          tags_count[i]++;
-          m--;
-        }
-      }
-    }
-    for(var x=0;x<category_init.length;x++){
-      arry_category.push(category_init[x]);
-      category_count[x] = 1;
-      for(var n=x+1;n<category_init.length;n++){
-        if(category_init[x] === category_init[n]){
-          category_init.splice(n,1);
-          category_count[x]++;
-          n--;
-        }
-      }
-    }
     post.find({'category':category},null,{sort:'-date'},function(err,datas){
       var p = req.query.p?req.query.p:1;
       p = parseInt(p);
@@ -69,24 +36,8 @@ router.get('/category',function(req,res,next){
 
     })
 
-    //console.log(allArticles);
-    ////console.log(docs);
-    //console.log(category);
-    //console.log(arry_tags);
-    //console.log(tags_count);
-    //
     console.log(arry_category);
-    //console.log(arry_category.length);
     console.log(category_count);
   });
-
-
-
 });
-
-
-
-
-
-
 module.exports = router;
