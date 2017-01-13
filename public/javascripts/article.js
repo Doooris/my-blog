@@ -28,10 +28,18 @@ $(function(){
   })
 
   var text = $('.nav .current').text();
-  var $current = $('.article-guide ul li a:not(.label-box ul li a)');
-  $current.each(function(index){
-    if($(this).text() == text){
-      $(this).css("color","#62BBC3");
+  var search = location.search;
+  var $current;
+  if(search.indexOf("tag=") === -1) {
+    $current = $('.article-guide ul li a:not(.label-box ul li a)');
+  } else {
+    $current = $('.label-box ul li a')
+  }
+  $current.each(function (index) {
+    if ($(this).text() == text) {
+      $(this).css("color", "#62BBC3");
     }
   })
+
+
 })

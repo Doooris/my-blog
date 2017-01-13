@@ -5,12 +5,11 @@ var express = require('express');
 var router = express.Router();
 markdown = require('markdown').markdown;
 var getArry = require('./category_tags');
-//var duoshuo = require('duoshuo');
-//
-//var duoshuo = new Duoshuo({
-//  short_name: 'abc', // 站点申请的多说二级域名。
-//  secret: 'xxx' // 站点密钥
-//})
+var Duoshuo = require('duoshuo');
+var duoshuo = new Duoshuo({
+  short_name: 'idoris', // 站点申请的多说二级域名。
+  secret: '32ff43e9e6d85a9a0aba05a226e94fda' // 站点密钥
+})
 
 router.get('/details', function(req, res, next) {
     var order;
@@ -35,6 +34,9 @@ router.get('/details', function(req, res, next) {
     }
     var size = docs.length;
     var title = docs[order-1].title;
+    docs.forEach(function(doc){
+      doc.content = markdown.toHTML(doc.content);
+    });
     res.render('article_detail', {title: title+'| Article | DorisBlog',order: order,size:size,arry_tags:arry_tags,tags_count:tags_count,arry_category:arry_category,category_count:category_count,content: docs });
   });
 });

@@ -55,7 +55,7 @@
             <p class="title2">标签</p>
             <ul id="tagsList">
                 <% for(var i = 0; i < arry_tags.length; i++){ %>
-                <li class="tagsList-a"><a href="" ><%= arry_tags[i] %></a></li>
+                <li class="tagsList-a"><a href="/article/tags?tag=<%= arry_tags[i] %>" ><%= arry_tags[i] %></a></li>
                 <% } %>
             </ul>
         </div>

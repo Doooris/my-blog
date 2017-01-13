@@ -3,8 +3,14 @@
  */
 var express = require('express');
 var router = express.Router();
-markdown = require('markdown').markdown;
+var markdown = require('markdown').markdown;
 var getArry = require('./category_tags');
+var Duoshuo = require('duoshuo');
+
+var duoshuo = new Duoshuo({
+  short_name: 'idoris', // 站点申请的多说二级域名。
+  secret: '32ff43e9e6d85a9a0aba05a226e94fda' // 站点密钥
+})
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

@@ -1,6 +1,4 @@
-/**
- * Created by sitin on 17/1/13.
- */
+
 exports.getCategory = function(docs){
   var category_init = [];
   var arry_category = [];

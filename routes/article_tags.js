@@ -1,5 +1,5 @@
 /**
- * Created by sitin on 17/1/10.
+ * Created by sitin on 17/1/13.
  */
 var express = require('express');
 var router = express.Router();
@@ -12,8 +12,8 @@ var duoshuo = new Duoshuo({
   secret: '32ff43e9e6d85a9a0aba05a226e94fda' // 站点密钥
 })
 
-router.get('/category',function(req,res,next){
-  var category = req.query.category;
+router.get('/tags',function(req,res,next){
+  var tag = req.query.tag;
   post.find({},null,{sort:'-date'},function(err,docs){
     if(err){
       console.error(err);
@@ -24,7 +24,7 @@ router.get('/category',function(req,res,next){
     var arry_category = getArry.getCategory(docs)[0];
     var category_count = getArry.getCategory(docs)[1];
 
-    post.find({'category':category},null,{sort:'-date'},function(err,datas){
+    post.find({'tags':tag},null,{sort:'-date'},function(err,datas){
       var p = req.query.p?req.query.p:1;
       p = parseInt(p);
       if(err){
@@ -38,12 +38,10 @@ router.get('/category',function(req,res,next){
       var j = Math.ceil(size/8);
       console.log("size="+size+";j="+j+"p="+p);
 
-      res.render('article_category',{title:category+'| Article | DorisBlog',name:category,size:size,j:j,p:p,arry_tags:arry_tags,tags_count:tags_count,arry_category:arry_category,category_count:category_count,content:docs,datas:datas});
+      res.render('article_tags',{title:tag+'| Article | DorisBlog',name:tag,size:size,j:j,p:p,arry_tags:arry_tags,tags_count:tags_count,arry_category:arry_category,category_count:category_count,content:docs,datas:datas});
 
     })
 
-    console.log(arry_category);
-    console.log(category_count);
   });
 });
 module.exports = router;
