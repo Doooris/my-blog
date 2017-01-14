@@ -25,7 +25,7 @@
                 <img src="/images/mycolor.jpg" alt="doris' picture">
             </div>
             <div class="author-info">
-                <p>14届东华大学毕业生,曾就职于华润万家.热爱烹饪,健身,编程.世界太大,所知太少,抱终身学习态度.</p>
+                <p>14届东华大学毕业生,曾就职于华润万家.热爱阅读,烹饪,健身,编程.</p>
                 <i class="fa fa-envelope">hxpt2031@gmail.com</i>
             </div>
         </div>
@@ -44,7 +44,11 @@
             <p class="title2">最近文章</p>
             <ul class="latest-list">
                 <% for(var i = 0; i < 10; i++){ %>
-                <li><i class="fa fa-caret-right"></i><a href="/article/details?articleTitle=<%= content[i].title %>&articleId=<%= content[i]._id %>" ><%= content[i].title %></a></li>
+                <li><i class="fa fa-caret-right"></i>
+                    <a href="/article/details?articleTitle=<%= content[i].title %>&articleId=<%= content[i]._id %>" ><%= content[i].title %>
+                        <span class="ds-thread-count" data-thread-key="<%= content[i]._id %>" data-count-type="comments"></span>
+                    </a>
+                </li>
                 <% } %>
             </ul>
         </div>
