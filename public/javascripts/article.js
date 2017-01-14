@@ -1,7 +1,3 @@
-/**
- * Created by sitin on 16/12/16.
- */
-'use strict';
 $(function(){
   $('header .arrow').click(function(){
     if($(this).children().hasClass('fa-angle-up')) {

@@ -12,6 +12,8 @@ var article = require('./routes/article');
 var article_detail = require('./routes/article_detail');
 var article_tags = require('./routes/article_tags');
 var article_category = require('./routes/article_category');
+var picture = require('./routes/picture');
+console.log(picture);
 var admin_index = require('./routes/admin_index');
 var admin_update = require('./routes/admin_update');
 
@@ -42,6 +44,7 @@ app.use('/article', article);
 app.use('/article', article_detail);
 app.use('/article', article_tags);
 app.use('/article', article_category);
+app.use('/picture',picture);
 app.use('/admin', admin_index);
 app.use('/admin', admin_update);
 

@@ -1,6 +1,3 @@
-/**
- * Created by sitin on 17/1/10.
- */
 var express = require('express');
 var router = express.Router();
 markdown = require('markdown').markdown;
