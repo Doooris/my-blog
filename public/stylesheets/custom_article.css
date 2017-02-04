@@ -563,6 +563,7 @@ header .arrow:hover{
     padding: 4px 8px 8px;
     box-shadow: 0 2px 2px rgba(0,0,0,0.3);
     text-align: center;
+    color: black;
 }
 .social-contact .code-area img{
     width: 160px;
@@ -601,51 +602,7 @@ header .arrow:hover{
     padding: 0;
     line-height: 1.5rem;
 }
-.ds-sync{
-    display:none !important;
-}
-.ds-post-button{
-    background: #50969d !important;
-    color: white !important;
-    text-shadow: none !important;
-}
-.ds-post-button:hover{
-    background:  #62BBC3 !important;
-    color: white !important;
-    text-shadow: none !important;
-}
-.ds-powered-by a{
-    display:none !important;
-}
-.ds-avatar img,.ds-avatar{
-    border-radius: 50% !important;
-}
-li.ds-post{
-    border-top: none !important;
-}
-.ds-share-icons-16 li a{
-  background-image: url("../images/service-icons-color-no.png")!important;
-}
-.ds-share-icons-16:hover li a{
-    background-image: url("http://static.duoshuo.com/images/service-icons-color.png?v=2")!important;
-}
-.ds-share-icons-16 .share-to{
-    /*background-position: 0 -256px!important;*/
-}
-.ds-share-icons-more ul.ds-share-icons-16 a{
-    background-image: url("http://static.duoshuo.com/images/service-icons-color.png?v=2")!important;
-}
-.ds-share-icons-more {
-    background-image: url("http://static.duoshuo.com/images/service-icons-color.png?v=2")!important;
-}
-.ds-sort{
-    display: none;
-}
-.ds-comments .ds-post-placeholder{
-    display: none!important;
-}
-.ds-share{
-    margin-top: -50px;
-}
+
+
 
 

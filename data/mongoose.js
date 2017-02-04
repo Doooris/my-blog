@@ -11,7 +11,8 @@ var blogSchema = new mongoose.Schema({
   content: String,
   date: String,
   tags: [{type:String}],
-  category: [{type:String}]
+  category: [{type:String}],
+  pv: Number
   //article_id: {type: Number, unique:true},
   //about_id: {
   //  prev_id: Number,

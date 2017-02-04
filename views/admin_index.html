@@ -45,6 +45,7 @@
         var blogAuthor = $("#author").val().trim();
         var blogTags = $("#tags").val().trim();
         var blogCategory = categoryname +"," +categorynameE;
+        var blogPv = 0;
 //        alert(blogCategory);
 
 
@@ -86,7 +87,8 @@
           'content': blogContent,
           'date': yy + '-' + MM + '-' + dd + ' ' + hh + ':' + mm + ':' + ss,
           'tags': blogTags,
-          'category': blogCategory
+          'category': blogCategory,
+          'pv': blogPv
         };
 //        console.log(blogCategory);
         $.ajax({
@@ -172,6 +174,7 @@
         <%= content[i].tags %>
       </span>
       <p>发布在: <%= content[i].category[0] %></p>
+      <p>阅读次数: <%= content[i].pv %></p>
       <p class="blog-content"><%- content[i].content %></p>
       <p class="blog-extra">
         <span class="date"><%= content[i].date %></span>

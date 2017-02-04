@@ -11,7 +11,7 @@
       <ul class="article-list">
         <li>
           <h3 class="title"><a href="javascript:;"><%= content[order-1].title %></a></h3>
-          <small><%= content[order-1].date %><span class="prep by">by  <%= content[order-1].author %></span><span class="prep">发布在</span><a class="postOn highlight" href="/article/category?category=<%= content[order-1].category[0] %>"><%= content[order-1].category[0] %></a><span class="prep">阅读</span>123次</small>
+          <small><%= content[order-1].date %><span class="prep by">by  <%= content[order-1].author %></span><span class="prep">发布在</span><a class="postOn highlight" href="/article/category?category=<%= content[order-1].category[0] %>"><%= content[order-1].category[0] %></a><span class="prep">阅读</span><%= content[order-1].pv %>次</small>
           <div class="content"><%- content[order-1].content %></div>
           <p class="tag"><i class="fa fa-tag"></i>
             <% content[order-1].tags.forEach(function(element){ %>

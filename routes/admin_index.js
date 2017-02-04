@@ -75,6 +75,7 @@ router.post('/', function(req, res) {
     var title = req.body.title;
     var arry_tags = req.body.tags.split(" ");
     var tags = [];
+    var pv = req.body.pv;
 
     arry_tags.forEach(function(element) {
     if (element) {
@@ -90,7 +91,8 @@ router.post('/', function(req, res) {
         title: title,
         author: author,
         tags: tags,
-        category: category
+        category: category,
+        pv: pv
       });
       newPost.save(function (err){
         if (err) {
@@ -101,6 +103,8 @@ router.post('/', function(req, res) {
         console.log('保存成功！');
         console.log("tags:"+tags);
         console.log("category:"+category);
+        console.log("pv:"+pv);
+
         res.send(200);
       });
     }

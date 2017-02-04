@@ -35,7 +35,9 @@
             <p class="title2">文章分类</p>
             <ul id="categoryList" class="clearfix">
                 <% for(var i = 0; i < arry_category.length; i++){ %>
+                <% if(i < size ) { %>
                 <li class="categoryList-a"><a href="/article/category?category=<%= arry_category[i] %>" ><%= arry_category[i] %></a><span class="num">(<%= category_count[i] %>)</span></li>
+                <% } %>
                 <% } %>
             </ul>
 
@@ -44,22 +46,26 @@
             <p class="title2">最近文章</p>
             <ul class="latest-list">
                 <% for(var i = 0; i < 10; i++){ %>
+                <% if(i < size ) { %>
                 <li><i class="fa fa-caret-right"></i>
                     <a href="/article/details?articleTitle=<%= content[i].title %>&articleId=<%= content[i]._id %>" ><%= content[i].title %>
                         <span class="ds-thread-count" data-thread-key="<%= content[i]._id %>" data-count-type="comments"></span>
                     </a>
                 </li>
                 <% } %>
+                <% } %>
             </ul>
         </div>
-        <div class="hottest">
-            <p class="title2">最热文章</p>
-        </div>
+        <!--<div class="hottest">-->
+            <!--<p class="title2">最热文章</p>-->
+        <!--</div>-->
         <div class="label-box">
             <p class="title2">标签</p>
             <ul id="tagsList">
                 <% for(var i = 0; i < arry_tags.length; i++){ %>
+                <% if(i < size ) { %>
                 <li class="tagsList-a"><a href="/article/tags?tag=<%= arry_tags[i] %>" ><%= arry_tags[i] %></a></li>
+                <% } %>
                 <% } %>
             </ul>
         </div>

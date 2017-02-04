@@ -11,7 +11,7 @@
         <% if(i < size ) { %>
         <li>
           <h3 class="title"><a href="/article/details?articleTitle=<%= content[i].title %>&order=<%- i+1 %>" class="highlight"><%= content[i].title %></a></h3>
-        <small><%= content[i].date %><span class="prep by">by  <%= content[i].author %></span><span class="prep">发布在</span><a class="postOn highlight" href="/article/category?category=<%= content[i].category[0] %>"><%= content[i].category[0] %></a><span class="prep">阅读</span>123次</small>
+        <small><%= content[i].date %><span class="prep by">by  <%= content[i].author %></span><span class="prep">发布在</span><a class="postOn highlight" href="/article/category?category=<%= content[i].category[0] %>"><%= content[i].category[0] %></a><span class="prep">阅读</span><%= content[i].pv %>次</small>
           <div class="content content_short"><%- content[i].content %></div>
           <a href="/article/details?articleTitle=<%= content[i].title %>&order=<%- i+1 %>" class="readMore highlight">阅读全文...</a>
           <p class="tag"><i class="fa fa-tag"></i>
