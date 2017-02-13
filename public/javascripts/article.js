@@ -36,6 +36,15 @@ $(function(){
       $(this).css("color", "#62BBC3");
     }
   })
+  $('div.bottom>ul>li>a').bind("click",function(){
+    $(this).siblings().show().parent('li').css({"border-top":"5px solid #69c9d1","background":"linear-gradient(#B8B3A4,#ded8c6 100%,#ded8c6)"}).
+    siblings().css({"border-top":"5px solid transparent","background":"none"}).find('ul').hide();
+  })
+  $('div.bottom .latest_comments>a').trigger("click");
+  $(div.bottom>ul>li).hover(function(){
+    $(this).css({"border-top":"5px solid #69c9d1","background":"linear-gradient(#B8B3A4,#ded8c6 100%,#ded8c6)"});
+  })
 
 
-})
+
+});

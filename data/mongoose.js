@@ -9,7 +9,7 @@ var blogSchema = new mongoose.Schema({
   title: String,
   author: String,
   content: String,
-  date: String,
+  date: Date,
   tags: [{type:String}],
   category: [{type:String}],
   pv: Number
