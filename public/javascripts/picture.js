@@ -2,12 +2,12 @@
  * Created by Doris on 17/2/16.
  */
 $(function(){
-  $(".mask-info").mouseenter(function(){
-    $(this).find(".img-info").stop().fadeIn(400).siblings("span.line").stop().animate({width : "40"},400);
+  $(".mask-info").mouseover(function(){
+    $(this).find(".img-info").stop().fadeIn(400).siblings(".name").find(".line").stop().animate({width: "100%"},400);
     $(this).siblings(".picture-list .img-box").css({"filter" : "brightness(0.6)"});
-  }).mouseleave(function(){
+  }).mouseout(function(){
     $(this).siblings(".picture-list .img-box").css({"filter":"brightness(1)"});
-    $(this).find(".img-info").stop().fadeOut(400).siblings("span.line").stop().animate({width : "0"},400);
+    $(this).find(".img-info").stop().fadeOut(400).siblings(".name").find(".line").stop().animate({width: "0"},400);
   })
   var size = $(".album-outside ul li").size();
   var position;
