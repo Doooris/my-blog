@@ -41,10 +41,8 @@ $(function(){
     siblings().css({"border-top":"5px solid transparent","background":"none"}).find('ul').hide();
   })
   $('div.bottom .latest_comments>a').trigger("click");
-  $(div.bottom>ul>li).hover(function(){
+  $('div.bottom>ul>li').hover(function(){
     $(this).css({"border-top":"5px solid #69c9d1","background":"linear-gradient(#B8B3A4,#ded8c6 100%,#ded8c6)"});
   })
-
-
 
 });
