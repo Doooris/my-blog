@@ -245,7 +245,7 @@ header .arrow:hover{
     }
 }
 @media (max-width: 768px) {
-    .header-outside .search-inside input{
+    .header-outside .search-inside{
         display: none;
     }
 

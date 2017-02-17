@@ -1,15 +1,21 @@
 $(function(){
   $('header .arrow').click(function(){
-    if($(this).children().hasClass('fa-angle-up')) {
+    if($(this).attr("status") == 1){
       $(this).attr("status","0");
+      sessionStorage.setItem("status","0");
       $('.header').animate({top: '-153px'}, 300).parent().animate({'padding-top': '67px'}, 300);
       $(this).find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
     }else{
       $(this).attr("status","1");
+      sessionStorage.setItem("status","1");
       $('.header').animate({top: '0px'}, 600).parent().animate({'padding-top': '220px'}, 600);
       $(this).find('i').removeClass('fa-angle-down').addClass('fa-angle-up');
     }
   })
+    if(sessionStorage.status == 0){
+      $('.header').css({top: '-153px'}).parent().css({'padding-top': '67px'});
+      $('header .arrow').attr("status","0").find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
+  }
   $(".content_short").each(function(){
     var maxwidth = 250;
     if($(this).text().length>maxwidth){
