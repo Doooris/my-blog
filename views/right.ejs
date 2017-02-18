@@ -46,8 +46,7 @@
                 <% for(var i = 0; i < 10; i++){ %>
                 <% if(i < content.length ) { %>
                 <li><i class="fa fa-caret-right"></i>
-                    <a href="/article/details?articleTitle=<%= content[i].title %>&articleId=<%= content[i]._id %>" ><%= content[i].title %>
-                    </a>
+                    <a href="/article/details?articleTitle=<%= content[i].title %>&articleId=<%= content[i]._id %>" ><%= content[i].title %></a>
                     <span class="ds-thread-count" data-thread-key="<%= content[i]._id %>" data-count-type="comments"></span>
                 </li>
                 <% } %>
