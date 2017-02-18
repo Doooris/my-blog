@@ -16,6 +16,18 @@ $(function(){
       $('.header').css({top: '-153px'}).parent().css({'padding-top': '67px'});
       $('header .arrow').attr("status","0").find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
   }
+
+  $('header .menubarH').mouseover(function(){
+    $(this).css('transform','rotate(180deg)').siblings('header ul.content-nav').stop().fadeIn(400);
+  }).mouseout(function(){
+    $(this).css('transform','rotate(90deg)').siblings('header ul.content-nav').stop().fadeOut(400);
+  })
+  $('header ul.content-nav').mouseover(function(){
+    $(this).stop().fadeIn(400).siblings('header .menubarH').css('transform','rotate(180deg)');
+  }).mouseout(function(){
+    $(this).stop().fadeOut(400).siblings('header .menubarH').css('transform','rotate(90deg)');
+  })
+
   $(".content_short").each(function(){
     var maxwidth = 250;
     if($(this).text().length>maxwidth){
