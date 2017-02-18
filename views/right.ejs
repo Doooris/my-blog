@@ -47,8 +47,8 @@
                 <% if(i < content.length ) { %>
                 <li><i class="fa fa-caret-right"></i>
                     <a href="/article/details?articleTitle=<%= content[i].title %>&articleId=<%= content[i]._id %>" ><%= content[i].title %>
-                        <span class="ds-thread-count" data-thread-key="<%= content[i]._id %>" data-count-type="comments"></span>
                     </a>
+                    <span class="ds-thread-count" data-thread-key="<%= content[i]._id %>" data-count-type="comments"></span>
                 </li>
                 <% } %>
                 <% } %>
