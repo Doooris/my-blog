@@ -49,7 +49,7 @@ $(function(){
   } else {
     $current = $('.label-box ul li a')
   }
-  $current.each(function (index) {
+  $current.each(function (index){
     if ($(this).text() == text) {
       $(this).css("color", "#62BBC3");
     }

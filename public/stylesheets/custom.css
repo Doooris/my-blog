@@ -343,7 +343,7 @@ header .arrow:hover{
     padding-right: 5px;
     /*border: 1px solid black;*/
     margin-left: -280px;
-    /*height: 1000px;*/
+    height: 100%;
     font-family: Georgia,Serif;
 }
 .wrapper-left .nav:before{
