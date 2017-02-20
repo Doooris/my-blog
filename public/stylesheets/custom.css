@@ -99,7 +99,7 @@ header{
 .img-anim{
     animation: opacity-change 1s ease-in;
 }
-.wrapper-left .nav,.wrapper-left .article-list,.wrapper-right,ul.picture-list{
+.wrapper-left .nav,.wrapper-left .article-list,.wrapper-right,.align-center{
     animation: opacity_transform-anim 1s ease-in;
 }
 @-webkit-keyframes opacity_transform-anim{
@@ -771,6 +771,12 @@ div.copyright{
     bottom: 0;
     margin: 0 10%;
 }
+div.copyright p a:hover{
+    color: #62BBC3;
+}
+.copyright_picPage p a:hover{
+    color: #62BBC3;
+}
 .copyright_picPage{
     text-align: center;
     width: 80%;
@@ -840,7 +846,7 @@ div.ds-comment-body div.ds-replybox form .ds-post-toolbar .ds-toolbar-buttons{
 #ds-thread #ds-reset .ds-replybox,#ds-thread #ds-reset .ds-toolbar{
     z-index: 1!important;
 }
-.picture-list{
+.align_center{
     padding-top: 50px;
     width: 100%;
     padding-left: 0;
@@ -1074,7 +1080,46 @@ div.ds-comment-body div.ds-replybox form .ds-post-toolbar .ds-toolbar-buttons{
     font-weight: 200;
     color: red;
 }
+.about_page{
+    width: 90%;
+    margin: 60px 20px;
+    /*border: 1px solid blue;*/
 
+}
+.about_page section:not(#leave_message){
+    /*height: 250px;*/
+    margin-bottom: 100px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+.about_page h2{
+    font-size: 18px;
+    opacity: 0.5;
+}
+.about_page h2 i{
+    font-size: 18px;
+    opacity: 0.5;
+}
+.about_page img{
+    width: 200px;
+    height: 200px;
+    float: left;
+    margin-left: -10px;
+    margin-right: 30px;
+    box-shadow: 2px 4px 2px rgba(0,0,0,0.3);
+}
+.about_page p{
+    opacity: 0.6;
+    font-size: 15px;
+    line-height: 2rem;
+}
+.about_page section ul li{
+    list-style: square;
+    line-height: 30px;
+    font-size: 15px;
+}
+.about_page section ul li a{
+    margin-left: 8px;
+}
 
 
 

@@ -60,6 +60,12 @@ $(function(){
   })
   $('div.bottom .latest_comments>a').trigger("click");
 
+  $('.about_page section:not(#leave_message)').mouseover(function(){
+    $(this).css("border","1px solid #55A2A9");
+  }).mouseout(function(){
+    $(this).css("border","1px solid rgba(0,0,0,0.2)");
+  })
+
 
 
 });
