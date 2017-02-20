@@ -17,8 +17,14 @@ var about = require('./routes/about');
 console.log(picture);
 var admin_index = require('./routes/admin_index');
 var admin_update = require('./routes/admin_update');
-
+var auth = require('http-auth');
+var basic = auth.basic({
+        realm: "Simon Area.",
+        file: __dirname + "/users.htpasswd"
+});
 var app = express();
+app.use(auth.connect(basic));
+
 global.post = require('./data/mongoose');
 
 // view engine setup
@@ -26,6 +32,16 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 app.engine('html', require("ejs").__express);
 
+
+app.get('/admin_index', function(req, res) {
+        res.send("Hello from express - " + req.user + "!");
+
+});
+
+app.get('/admin_update', function(req, res) {
+        res.send("Hi - " + req.user + "! This is the update page");
+
+});
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
