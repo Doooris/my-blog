@@ -151,7 +151,7 @@ div.bg{
     top: 0;
     bottom: 0;
     height: 100%;
-    background: url("../images/bg.jpg") no-repeat;
+    background: url("http://olxm3tby9.bkt.clouddn.com/bg.jpg") no-repeat;
     background-position: 50% 50%;
     background-size: cover;
     z-index: -1;
@@ -164,7 +164,7 @@ div.bg span{
 div.bg span:first-child{
     width: 300px;
     height: 350px;
-    background: url("../images/close.png") no-repeat;
+    background: url("http://olxm3tby9.bkt.clouddn.com/close.png") no-repeat;
     animation: bgMove 80s ease infinite;
     bottom: 0;
     right: -300px;
@@ -173,7 +173,7 @@ div.bg span:nth-child(2){
 
     width: 150px;
     height: 180px;
-    background: url("../images/close2.png") no-repeat center;
+    background: url("http://olxm3tby9.bkt.clouddn.com/close2.png") no-repeat center;
     background-size: 110%;
     animation: bgMove 120s ease infinite;
     top: 200px;
@@ -182,7 +182,7 @@ div.bg span:nth-child(2){
 div.bg span:nth-child(3){
     width: 83px;
     height: 103px;
-    background: url("../images/close3.png");
+    background: url("http://olxm3tby9.bkt.clouddn.com/close3.png");
     animation: bgMove 150s  ease-out infinite;
     top: 100px;
     right: -300px;
