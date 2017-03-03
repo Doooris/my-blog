@@ -58,7 +58,7 @@ app.use('/article', article_tags);
 app.use('/article', article_category);
 app.use('/picture',picture);
 app.use('/about',about);
-app.use(auth.connect(basic));
+app.use('/admin',auth.connect(basic));
 app.use('/admin', admin_index);
 app.use('/admin', admin_update);
 
