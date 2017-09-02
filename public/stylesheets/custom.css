@@ -25,6 +25,9 @@ a:hover {
 ol, ul, li {
     list-style: none;
 }
+.content p>img{
+    width: 100%;
+}
 /* css common */
 .clearfix:after {
     content: ".";
