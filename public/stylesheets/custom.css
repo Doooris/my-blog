@@ -26,7 +26,8 @@ ol, ul, li {
     list-style: none;
 }
 .content p>img{
-    width: 100%;
+    width: 95%;
+    height: auto;
 }
 /* css common */
 .clearfix:after {
