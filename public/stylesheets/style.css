@@ -10,7 +10,7 @@ li {list-style: none;}
 a {text-decoration: none;}
 
 .blog-add .blog-textarea {margin: 20px 0 10px;padding: 10px;border: 1px solid #ccc;}
-.blog-add .textarea-add {width: 80%;height: 1000px;border: none;resize: none;outline: none;}
+.blog-add .textarea-add {width: 80%;height: 600px;border: none;resize: none;outline: none;}
 .blog-add .blog-action {line-height: 30px;text-align: right;}
 .blog-add .blog-action .btn-publish,
 .blog-add .blog-action .btn-update {border: 1px solid #00B7FF;padding: 5px 20px;border-radius: 3px;}
