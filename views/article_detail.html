@@ -18,29 +18,15 @@
             <a href="/article/tags?tag=<%= element %>"><%= element %></a>
             <% }) %>
         </li>
-        <div class="ds-share" data-thread-key="<%= content[order-1]._id %>" data-title="<%= content[order-1]._title %>" data-images="" data-content="<%= content[order-1].content %>" data-url="/article/details?articleTitle=<%= content[order-1].title %>&order=<%= order %>">
-          <div class="ds-share-inline">
-            <ul  class="ds-share-icons-16">
-              <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);" data-service="weibo">分享到：</a></li>
-              <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-              <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-              <li><a class="ds-douban" href="javascript:void(0);" data-service="douban">豆瓣网</a></li>
-              <li><a class="ds-twitter" href="javascript:void(0);" data-service="twitter">Twitter</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="plink-box clearfix">
-        <% if(order > 1){ %>
-        <p class="prev_link plink"><a href="/article/details?articleTitle=<%= content[order-2].title %>&order=<%= order-1 %>"><i class="fa fa-arrow-left"></i><%= content[order-2].title %></a></p>
-        <% } %>
-        <% if(order < size){ %>
-        <p class="next_link plink"><a href="/article/details?articleTitle=<%= content[order].title %>&order=<%= order+1 %>"><%= content[order].title %><i class="fa fa-arrow-right"></i></a></p>
-        <% } %>
-        </div>
       </ul>
-      <!-- 多说评论框 start -->
-      <div class="ds-thread" data-thread-key="<%= content[order-1]._id %>" data-title="<%= content[order-1].title %>" data-url="http:www.idoris.me/article/details?articleTitle=<%= content[order-1].title %>&order=<%= order %>"></div>
-      <!-- 多说评论框 end -->
+    <div class="plink-box clearfix">
+    <% if(order > 1){ %>
+    <p class="prev_link plink"><a href="/article/details?articleTitle=<%= content[order-2].title %>&order=<%= order-1 %>"><i class="fa fa-arrow-left"></i><%= content[order-2].title %></a></p>
+    <% } %>
+    <% if(order < size){ %>
+    <p class="next_link plink"><a href="/article/details?articleTitle=<%= content[order].title %>&order=<%= order+1 %>"><%= content[order].title %><i class="fa fa-arrow-right"></i></a></p>
+    <% } %>
+    </div>
     </div>
   </div>
 <%- include right %>
