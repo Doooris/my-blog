@@ -1131,6 +1131,12 @@ div.ds-comment-body div.ds-replybox form .ds-post-toolbar .ds-toolbar-buttons{
 .about_page a:hover{
     color: #62BBC3;
 }
+.about_page #links li a{
+    color: #000000;
+}
+.about_page #links li span{
+    opacity: 0.6;
+}
 
 
 
