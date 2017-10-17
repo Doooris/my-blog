@@ -16,6 +16,7 @@ var picture = require('./routes/picture');
 var about = require('./routes/about');
 var admin_index = require('./routes/admin_index');
 var admin_update = require('./routes/admin_update');
+var id_auth = require('./routes/id_auth')
 
 var auth = require('http-auth');
 var basic = auth.basic({
@@ -61,6 +62,7 @@ app.use('/about',about);
 app.use('/admin',auth.connect(basic));
 app.use('/admin', admin_index);
 app.use('/admin', admin_update);
+app.use('/id_auth',id_auth)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
